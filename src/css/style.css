@@ -1,0 +1,25 @@
+.btn_close:hover{
+    -fx-background-color: red;
+}
+.btn_min:hover{
+    -fx-background-color: gray;
+}
+
+.btn_max:hover{
+    -fx-background-color: gray;
+}
+
+.btn_minimize:hover{
+    -fx-background-color: gray;
+}
+
+.btn_menu:hover{
+    -fx-background-color: gray;
+}
+
+.btn_menu_exit:hover{
+    -fx-background-color: #D56062;
+}
+.menu_link:hover{
+    -fx-background-color: gray;
+}

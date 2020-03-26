@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="904.0" prefWidth="1113.0">
+         <children>
+            <AnchorPane fx:id="layer2" layoutY="40.0" prefHeight="864.0" prefWidth="557.0" style="-fx-background-color: #6CA65A;">
+               <children>
+                  <ImageView fx:id="la1_img1" fitHeight="170.0" fitWidth="200.0" layoutX="179.0" layoutY="59.0">
+                     <image>
+                        <Image url="@../img/LOGOHUNT1.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="la1_text1" fill="#f8f8f8" layoutX="71.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tu es un chasseur/pecheur et tu aimerait recevoir/donner des conseils, acquerir des outils ou rester informer sur le fil d'actualité ? Alors n'attend plus :" textAlignment="CENTER" wrappingWidth="414.13671875">
+                     <font>
+                        <Font name="Arial Black" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="la1_text11" fill="WHITE" layoutX="186.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouveau ?">
+                     <font>
+                        <Font name="Arial Black" size="32.0" />
+                     </font>
+                  </Text>
+                  <JFXButton fx:id="la1_btn1" layoutX="167.0" layoutY="487.0" onMouseClicked="#btn_signup_la1" prefHeight="55.0" prefWidth="223.0" style="-fx-border-color: #fff; -fx-background-color: transparent; -fx-font-size: 14px; -fx-border-radius: 5;" styleClass="connexion_form" stylesheets="@../css/style.css" text="CREER UN COMPTE" textFill="WHITE" />
+                  <JFXButton fx:id="la1_btn2" layoutX="166.0" layoutY="487.0" onMouseClicked="#btn_signin_la1" prefHeight="55.0" prefWidth="223.0" style="-fx-border-color: #fff; -fx-background-color: transparent; -fx-font-size: 14px; -fx-border-radius: 5;" styleClass="connexion_form" stylesheets="@../css/style.css" text="CONNECTEZ VOUS" textFill="WHITE" />
+                  <Text fx:id="la1_text2" fill="WHITE" layoutX="38.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous avez deja un compte?">
+                     <font>
+                        <Font name="Arial Black" size="32.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="la1_img2" fitHeight="170.0" fitWidth="200.0" layoutX="178.0" layoutY="59.0">
+                     <image>
+                        <Image url="@../img/LOGOHUNT1.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="layer1" layoutX="560.0" layoutY="40.0" prefHeight="864.0" prefWidth="557.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Text fx:id="la2_text1" fill="#464548" layoutX="186.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue !">
+                     <font>
+                        <Font name="Arial Black" size="29.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="la2_text11" fill="#464548" layoutX="71.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Authentifiez vous" textAlignment="CENTER" wrappingWidth="414.13671875">
+                     <font>
+                        <Font name="Arial Black" size="17.0" />
+                     </font>
+                  </Text>
+                  <JFXTextField fx:id="la2_textf_user1" focusColor="#6ca65a" labelFloat="true" layoutX="123.0" layoutY="156.0" prefHeight="55.0" prefWidth="312.0" promptText="Nom d'utilisateur" unFocusColor="#464548">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="la2_textf_pass1" focusColor="#6ca65a" labelFloat="true" layoutX="122.0" layoutY="267.0" prefHeight="55.0" prefWidth="312.0" promptText="Mot de passe" unFocusColor="#464548">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label fx:id="la2_lab1" layoutX="372.0" layoutY="465.0" text="Mot de passe oublié ?" textFill="#9a9898">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="la2_btn1" layoutX="123.0" layoutY="377.0" prefHeight="55.0" prefWidth="312.0" style="-fx-border-color: #6CA65A; -fx-background-color: transparent; -fx-font-size: 14px; -fx-border-radius: 5;" styleClass="connexion_form" stylesheets="@../css/style.css" text="CONNEXION" textFill="#6ca65a" />
+                  <JFXTextField fx:id="la2_textf_auth2" focusColor="#6ca65a" labelFloat="true" layoutX="124.0" layoutY="747.0" prefHeight="26.0" prefWidth="312.0" promptText="Authorisation" unFocusColor="#464548">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXComboBox fx:id="la2_textf_dom2" focusColor="#6ca65a" layoutX="124.0" layoutY="693.0" prefHeight="37.0" prefWidth="312.0" promptText="Votre domaine" unFocusColor="#464548" />
+                  <JFXTextField fx:id="la2_textf_pass22" focusColor="#6ca65a" labelFloat="true" layoutX="124.0" layoutY="628.0" prefHeight="26.0" prefWidth="312.0" promptText="Confirmez le mot de passe" unFocusColor="#464548">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="la2_textf_pass2" focusColor="#6ca65a" labelFloat="true" layoutX="122.0" layoutY="560.0" prefHeight="26.0" prefWidth="312.0" promptText="Mot de passe" unFocusColor="#464548">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="la2_textf_user2" focusColor="#6ca65a" labelFloat="true" layoutX="122.0" layoutY="491.0" prefHeight="26.0" prefWidth="312.0" promptText="Nom d'utilisateur" unFocusColor="#464548">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="la2_textf_addr2" focusColor="#6ca65a" labelFloat="true" layoutX="124.0" layoutY="424.0" prefHeight="26.0" prefWidth="312.0" promptText="Adresse de residence" unFocusColor="#464548">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="la2_textf_tel2" focusColor="#6ca65a" labelFloat="true" layoutX="123.0" layoutY="357.0" prefHeight="26.0" prefWidth="312.0" promptText="Telephone" unFocusColor="#464548">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="la2_textf_email2" focusColor="#6ca65a" labelFloat="true" layoutX="122.0" layoutY="287.0" prefHeight="26.0" prefWidth="312.0" promptText="Email" unFocusColor="#464548">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXButton fx:id="la2_btn2" layoutX="124.0" layoutY="795.0" prefHeight="55.0" prefWidth="312.0" style="-fx-border-color: #6CA65A; -fx-background-color: transparent; -fx-font-size: 14px; -fx-border-radius: 5;" styleClass="connexion_form" stylesheets="@../css/style.css" text="CREER UN COMPTE" textFill="#6ca65a" />
+                  <JFXTextField fx:id="la2_textf_prenom2" focusColor="#6ca65a" labelFloat="true" layoutX="123.0" layoutY="223.0" prefHeight="26.0" prefWidth="312.0" promptText="Prenom" unFocusColor="#464548">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="la2_textf_nom2" focusColor="#6ca65a" labelFloat="true" layoutX="124.0" layoutY="155.0" prefHeight="32.0" prefWidth="312.0" promptText="Nom" unFocusColor="#464548">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <Text fx:id="la2_text22" fill="#464548" layoutX="72.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Content de vous voir 😍" textAlignment="CENTER" wrappingWidth="414.13671875">
+                     <font>
+                        <Font name="Arial Black" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="la2_text2" fill="#464548" layoutX="187.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue !">
+                     <font>
+                        <Font name="Arial Black" size="29.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <Pane layoutX="987.0" prefHeight="42.0" prefWidth="126.0" style="-fx-background-color: #464548;">
+               <children>
+                  <Pane fx:id="btn_close" layoutX="84.0" onMouseClicked="#handleClose" prefHeight="42.0" prefWidth="42.0" styleClass="btn_close" stylesheets="@../css/style.css">
+                     <children>
+                        <FontAwesomeIcon fill="WHITE" glyphName="CLOSE" layoutX="12.0" layoutY="29.0" size="2em" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="46.0" onMouseClicked="#handleMin" prefHeight="42.0" prefWidth="42.0" styleClass="btn_min" stylesheets="@../css/style.css">
+                     <children>
+                        <FontAwesomeIcon fill="WHITE" glyphName="MINUS" layoutX="12.0" layoutY="31.0" size="2em" />
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="42.0" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
