@@ -14,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -21,7 +23,6 @@ import javafx.util.Duration;
 
 public class Controller implements Initializable {
 
-    double x,y ;
     @FXML
     private AnchorPane layer1;
     /*
@@ -379,10 +380,4 @@ public class Controller implements Initializable {
         s.setFullScreen(true);
     }
 
-    @FXML
-    private void handleDragged(MouseEvent event){
-        Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        s.setX(event.getSceneX() - x);
-        s.setY(event.getSceneY() - y);
-    }
 }

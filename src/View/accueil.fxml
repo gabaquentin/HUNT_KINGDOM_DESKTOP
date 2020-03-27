@@ -15,12 +15,22 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Accueil">
+<StackPane fx:id="parent" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Accueil">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <top>
-            <HBox alignment="TOP_RIGHT" prefHeight="42.0" prefWidth="1026.0" spacing="859.0" style="-fx-background-color: #EEF5F9;" BorderPane.alignment="TOP_RIGHT">
+            <HBox fx:id="top" alignment="TOP_RIGHT" prefHeight="42.0" prefWidth="1026.0" style="-fx-background-color: #EEF5F9;" BorderPane.alignment="TOP_RIGHT">
                <children>
+                  <HBox HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label prefHeight="53.0" prefWidth="131.0" text="HuntKingdom" textFill="#464548">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox />
                   <Pane prefHeight="42.0" prefWidth="126.0" style="-fx-background-color: #464548;">
                      <children>
                         <Pane fx:id="btn_close" layoutX="84.0" onMouseClicked="#handleClose" prefHeight="42.0" prefWidth="42.0" styleClass="btn_close" stylesheets="@../css/style.css">
@@ -73,7 +83,7 @@
                               <Pane layoutY="122.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="293.0" styleClass="menu_link" stylesheets="@../css/style.css">
                                  <children>
                                     <FontAwesomeIcon fill="WHITE" glyphName="HOME" layoutX="12.0" layoutY="31.0" size="2em" />
-                                    <Label layoutX="113.0" layoutY="6.0" text="Accueil" textFill="WHITE">
+                                    <Label layoutX="113.0" layoutY="7.0" text="Accueil" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
@@ -99,7 +109,7 @@
                               <Pane layoutY="227.0" prefHeight="42.0" prefWidth="293.0" styleClass="menu_link" stylesheets="@../css/style.css">
                                  <children>
                                     <FontAwesomeIcon fill="WHITE" glyphName="AMBULANCE" layoutX="12.0" layoutY="31.0" size="2em" />
-                                    <Label layoutX="95.0" layoutY="7.0" prefHeight="30.0" prefWidth="103.0" text="URGENCES" textFill="WHITE">
+                                    <Label layoutX="95.0" layoutY="6.0" prefHeight="30.0" prefWidth="103.0" text="URGENCES" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor>
@@ -112,7 +122,7 @@
                               <Pane layoutX="1.0" layoutY="284.0" prefHeight="42.0" prefWidth="293.0" styleClass="menu_link" stylesheets="@../css/style.css">
                                  <children>
                                     <FontAwesomeIcon fill="WHITE" layoutX="12.0" layoutY="31.0" size="2em" />
-                                    <Label layoutX="79.0" layoutY="6.0" prefHeight="30.0" prefWidth="136.0" text="EVENEMENTS" textFill="WHITE">
+                                    <Label contentDisplay="CENTER" layoutX="82.0" layoutY="6.0" prefHeight="30.0" prefWidth="130.0" text="EVENEMENTS" textAlignment="CENTER" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor>
