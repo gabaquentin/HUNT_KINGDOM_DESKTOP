@@ -1,4 +1,4 @@
-package Controllers;
+package User.Controllers;
 import java.util.ResourceBundle;
 import java.net.URL;
 
@@ -7,7 +7,6 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.Initializable;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -22,6 +21,15 @@ import javafx.util.Duration;
 
 
 public class Controller implements Initializable {
+
+    private double xOffset = 0;
+    private double yOffset = 0;
+
+    @FXML
+    private StackPane parent;
+
+    @FXML
+    private HBox top;
 
     @FXML
     private AnchorPane layer1;
@@ -378,6 +386,28 @@ public class Controller implements Initializable {
     private void handleMax(MouseEvent event){
         Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
         s.setFullScreen(true);
+    }
+
+    @FXML
+    private void handleDragged(){
+        top.setOnMousePressed((event -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        }));
+        top.setOnMouseDragged((event -> {
+            Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            s.setX(event.getScreenX() - xOffset);
+            s.setY(event.getScreenY() - yOffset);
+            s.setOpacity(0.8f);
+        }));
+        top.setOnDragDone((event -> {
+            Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            s.setOpacity(1.0f);
+        }));
+        top.setOnMouseReleased((event -> {
+            Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            s.setOpacity(1.0f);
+        }));
     }
 
 }
