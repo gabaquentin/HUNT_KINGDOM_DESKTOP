@@ -147,7 +147,7 @@
                   <Pane prefHeight="42.0" prefWidth="42.0" />
                </children>
             </Pane>
-            <HBox onMouseDragged="#handleDragged" prefHeight="42.0" prefWidth="987.0" style="-fx-background-color: #EEF5F9;" />
+            <HBox fx:id="top" onMouseDragged="#handleDragged" prefHeight="42.0" prefWidth="987.0" style="-fx-background-color: #EEF5F9;" />
          </children>
       </AnchorPane>
    </children>
