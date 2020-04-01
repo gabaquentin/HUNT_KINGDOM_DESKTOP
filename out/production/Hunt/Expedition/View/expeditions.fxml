@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="parent" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Expedition.Controllers.Expeditionn">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <bottom>
+            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="1113.0" style="-fx-background-color: #EEF5F9;">
+               <children>
+                  <Text fill="#464548" opacity="0.77" strokeType="OUTSIDE" strokeWidth="0.0" text="Copyright ©2020 All rights reserved | Made with ♡ by OneTeam ✌" wrappingWidth="503.884765625">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <AnchorPane prefHeight="788.0" prefWidth="1113.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane prefHeight="767.0" prefWidth="1113.0">
+                     <children>
+                        <WebView fx:id="mapUrgence" prefHeight="767.0" prefWidth="1113.0" />
+                        <Pane layoutX="316.0" layoutY="558.0" prefHeight="69.0" prefWidth="783.0" style="-fx-background-color: #AACBC8;">
+                           <children>
+                              <Label layoutX="44.0" layoutY="25.0" text="Pour votre securité, veuillez prendre conaissance des zones a risques indiquées sur cette carte">
+                                 <font>
+                                    <Font name="FontAwesome Regular" size="17.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="316.0" layoutY="558.0" prefHeight="69.0" prefWidth="9.0" style="-fx-background-color: #D56062;" />
+                        <Pane fx:id="formUrgenceBody" layoutX="166.0" layoutY="165.0" opacity="0.88" prefHeight="543.0" prefWidth="783.0" style="-fx-background-color: #464548;">
+                           <children>
+                              <JFXButton layoutX="337.0" layoutY="248.0" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #54788B;" text="Envoyer" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="menu" layoutX="-294.0" opacity="0.88" prefHeight="537.0" prefWidth="294.0" style="-fx-background-color: #464548;" styleClass="menu" stylesheets="@../../css/style.css">
+                           <children>
+                              <Pane fx:id="btn_menu_exit" layoutX="293.0" layoutY="60.0" onMouseClicked="#hidemenu" opacity="0.75" prefHeight="65.0" prefWidth="52.0" styleClass="btn_menu_exit" stylesheets="@../../css/style.css">
+                                 <children>
+                                    <FontAwesomeIcon fx:id="btn_menu_exitbars" glyphName="CLOSE" layoutX="17.0" layoutY="41.0" size="2em" styleClass="blabla" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="btn_menu" layoutX="293.0" layoutY="60.0" onMouseClicked="#showmenu" opacity="0.75" prefHeight="65.0" prefWidth="52.0" styleClass="btn_menu" stylesheets="@../../css/style.css">
+                                 <children>
+                                    <FontAwesomeIcon fx:id="btn_menubars" glyphName="BARS" layoutX="17.0" layoutY="41.0" size="2em" styleClass="blabla" />
+                                 </children>
+                              </Pane>
+                              <ImageView layoutX="107.0" layoutY="14.0">
+                                 <image>
+                                    <Image url="@../../img/LOGOHUNT3.png" />
+                                 </image>
+                              </ImageView>
+                              <Pane layoutY="122.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="293.0" styleClass="menu_link" stylesheets="@../../css/style.css">
+                                 <children>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="HOME" layoutX="12.0" layoutY="31.0" size="2em" />
+                                    <Label layoutX="113.0" layoutY="7.0" text="Accueil" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="FontAwesome Regular" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="1.0" layoutY="176.0" prefHeight="42.0" prefWidth="293.0" styleClass="menu_link" stylesheets="@../../css/style.css">
+                                 <children>
+                                    <FontAwesomeIcon fill="WHITE" layoutX="12.0" layoutY="31.0" size="2em" />
+                                    <Label layoutX="95.0" layoutY="7.0" prefHeight="30.0" prefWidth="103.0" text="BOUTIQUE" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="FontAwesome Regular" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane layoutY="227.0" prefHeight="42.0" prefWidth="293.0" styleClass="menu_link" stylesheets="@../../css/style.css">
+                                 <children>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="AMBULANCE" layoutX="12.0" layoutY="31.0" size="2em" />
+                                    <Label layoutX="95.0" layoutY="6.0" prefHeight="30.0" prefWidth="103.0" text="URGENCES" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="FontAwesome Regular" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="1.0" layoutY="284.0" prefHeight="42.0" prefWidth="293.0" styleClass="menu_link" stylesheets="@../../css/style.css">
+                                 <children>
+                                    <FontAwesomeIcon fill="WHITE" layoutX="12.0" layoutY="31.0" size="2em" />
+                                    <Label contentDisplay="CENTER" layoutX="82.0" layoutY="6.0" prefHeight="30.0" prefWidth="130.0" text="EVENEMENTS" textAlignment="CENTER" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="FontAwesome Regular" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                        <JFXButton fx:id="formUrgenceBtn1" layoutX="414.0" layoutY="712.0" onMouseClicked="#closeformUrgenceBody" prefHeight="50.0" prefWidth="286.0" style="-fx-border-radius: 5px; -fx-background-color: #464548; -fx-background-color: #D56062;" text="Fermer le formulaire" textFill="#e9e8eb">
+                           <font>
+                              <Font name="FontAwesome Regular" size="15.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="formUrgenceBtn" layoutX="414.0" layoutY="712.0" onMouseClicked="#showformUrgenceBody" prefHeight="50.0" prefWidth="286.0" style="-fx-border-radius: 5px; -fx-background-color: #464548;" text="Ouvrir le formulaire" textFill="#e9e8eb">
+                           <font>
+                              <Font name="FontAwesome Regular" size="15.0" />
+                           </font>
+                        </JFXButton>
+                        <Pane fx:id="formUrgenceBar" layoutX="166.0" layoutY="753.0" prefHeight="14.0" prefWidth="782.0" style="-fx-background-color: #464548;" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <HBox fx:id="top" alignment="TOP_RIGHT" prefHeight="42.0" prefWidth="1026.0" style="-fx-background-color: #EEF5F9;" BorderPane.alignment="TOP_RIGHT">
+               <children>
+                  <HBox HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label prefHeight="42.0" prefWidth="119.0" text="  HuntKingdom" textFill="#464548">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <FontAwesomeIcon glyphName="ANGLE_DOUBLE_RIGHT" size="2.5em" wrappingWidth="32.14285659790039">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </FontAwesomeIcon>
+                        <Label prefHeight="42.0" prefWidth="102.0" text="Expedition" textFill="#464548">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox />
+                  <Pane prefHeight="42.0" prefWidth="126.0" style="-fx-background-color: #464548;">
+                     <children>
+                        <Pane fx:id="btn_close" layoutX="84.0" onMouseClicked="#handleClose" prefHeight="42.0" prefWidth="42.0" styleClass="btn_close" stylesheets="@../../css/style.css">
+                           <children>
+                              <FontAwesomeIcon fill="WHITE" glyphName="CLOSE" layoutX="12.0" layoutY="29.0" size="2em" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="btn_min" layoutX="42.0" onMouseClicked="#handleMin" prefHeight="42.0" prefWidth="42.0" styleClass="btn_min" stylesheets="@../../css/style.css">
+                           <children>
+                              <FontAwesomeIcon fill="WHITE" glyphName="MINUS" layoutX="12.0" layoutY="31.0" size="2em" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</StackPane>
