@@ -35,9 +35,6 @@ public class ajoutProduitController implements Initializable {
         frns.setItems(frn);
 
     }
-    public void ajoutProduit (ActionEvent event){
-
-}
 
     public void vider(){
         nom.clear();
@@ -69,7 +66,7 @@ public class ajoutProduitController implements Initializable {
         p.setFournisseur(fournisseur);
         p.setDescription(description);
 
-        int status = CrudProduit.ajout(p);
+        int status = CrudProduit.ajoutP(p);
 
         if (status>0) {
 

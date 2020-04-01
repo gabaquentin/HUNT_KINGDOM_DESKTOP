@@ -41,7 +41,7 @@
         </AnchorPane>
         <AnchorPane prefHeight="200.0" prefWidth="200.0">
             <children>
-                <Button alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="118.0" mnemonicParsing="false" onAction="#afficheProduit" prefHeight="43.0" prefWidth="90.0" style="-fx-border-color: #22a7f0; -fx-border-width: 2;" text="Afficher" textFill="WHITE">
+                <Button alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="118.0" mnemonicParsing="false" onAction="#afficheProduit" prefHeight="43.0" prefWidth="90.0" style="-fx-background-color: #22a7f0; -fx-border-width: 2;" text="Afficher" textFill="WHITE">
                     <font>
                         <Font name="Tahoma Bold" size="14.0" />
                     </font>
@@ -59,7 +59,12 @@
                         <TableColumn fx:id="prix" minWidth="0.0" prefWidth="85.0" text="Prix" />
                     </columns>
                 </TableView>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="90.0" style="-fx-border-color: #22a7f0; -fx-border-width: 2;" text="Ajouter " textFill="WHITE">
+            <Button fx:id="AjoutBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="184.0" mnemonicParsing="false" onAction="#fenetreAjout" prefHeight="43.0" prefWidth="90.0" style="-fx-border-color: #22a7f0; -fx-border-width: 2;" text="Ajouter " textFill="WHITE">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="ModifBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="250.0" mnemonicParsing="false" onAction="#fenetreModif" prefHeight="43.0" prefWidth="90.0" style="-fx-border-color: #F89406; -fx-border-width: 2;" text="Modifier" textFill="WHITE">
                <font>
                   <Font name="Tahoma Bold" size="14.0" />
                </font>
