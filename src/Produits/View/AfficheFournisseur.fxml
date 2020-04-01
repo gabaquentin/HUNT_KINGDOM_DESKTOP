@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Produits.Controllers.GestionFournisseur">
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <AnchorPane prefHeight="600.0" prefWidth="900.0">
+            <children>
+                <VBox prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2c3e50; -fx-border-color: #c2e0ff; -fx-border-width: 3;">
+                    <children>
+                        <HBox prefHeight="60.0" prefWidth="430.0" style="-fx-background-color: #F89406;">
+                            <children>
+                                <Label prefHeight="48.0" prefWidth="288.0" text="Afficher Fournisseurs " textFill="WHITE">
+                                    <font>
+                                        <Font name="Tahoma Bold" size="24.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets left="20.0" top="4.0" />
+                                    </HBox.margin>
+                                </Label>
+                            </children></HBox>
+
+
+
+
+
+
+
+
+                    </children></VBox>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <Button alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="118.0" mnemonicParsing="false" onAction="#afficheFournisseur" prefHeight="43.0" prefWidth="90.0" style="-fx-background-color: #22a7f0; -fx-border-width: 2;" text="Afficher" textFill="WHITE">
+                    <font>
+                        <Font name="Tahoma Bold" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="210.0" top="-43.0" />
+                    </VBox.margin>
+                </Button>
+                <TableView fx:id="tableF" layoutX="204.0" layoutY="116.0" prefHeight="369.0" prefWidth="652.0">
+                    <columns>
+                        <TableColumn fx:id="nomFournisseur" prefWidth="168.0" text="Nom Fournisseur" />
+                        <TableColumn fx:id="idFournisseur" minWidth="5.0" prefWidth="139.0" text="ID Fournisseur" />
+                        <TableColumn fx:id="emailFournisseur" prefWidth="344.0" text="Email Fournisseur" />
+                    </columns>
+                </TableView>
+                <Button fx:id="AjoutFBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="184.0" mnemonicParsing="false" onAction="#fenetreAjoutF" prefHeight="43.0" prefWidth="90.0" style="-fx-border-color: #22a7f0; -fx-border-width: 2;" text="Ajouter " textFill="WHITE">
+                    <font>
+                        <Font name="Tahoma Bold" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="ModifFBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="250.0" mnemonicParsing="false" onAction="#fenetreModifF" prefHeight="43.0" prefWidth="90.0" style="-fx-border-color: #F89406; -fx-border-width: 2;" text="Modifier" textFill="WHITE">
+                    <font>
+                        <Font name="Tahoma Bold" size="14.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </children>
+
+
+</GridPane>

@@ -42,10 +42,6 @@ public class ajoutProduitController implements Initializable {
         prx.clear();
         img.clear();
         desc.clear();
-
-
-
-
     }
 
     public void ajoutProduit(javafx.event.ActionEvent actionEvent) {

@@ -33,8 +33,8 @@ public class Main extends Application {
         DataSource ds=DataSource.getInstance();
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("../../View/AfficheP.fxml"));
-        primaryStage.setTitle("Ajout Produit");
+        Parent root = FXMLLoader.load(getClass().getResource("../Produits/View/AfficheFournisseur.fxml"));
+        primaryStage.setTitle("Produit");
         primaryStage.setScene(new Scene(root, 900, 600));
         primaryStage.show();
         //String Libelle= nomProduit.getText();
