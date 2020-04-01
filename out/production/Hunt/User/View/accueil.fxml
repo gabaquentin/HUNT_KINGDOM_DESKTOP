@@ -43,7 +43,7 @@
                               <FontAwesomeIcon fill="WHITE" glyphName="MINUS" layoutX="12.0" layoutY="31.0" size="2em" />
                            </children>
                         </Pane>
-                        <Pane fx:id="maximize" layoutX="46.0" onMouseClicked="#handleMax" prefHeight="42.0" prefWidth="42.0" styleClass="btn_max" stylesheets="@../../../css/style.css">
+                        <Pane fx:id="maximize" layoutX="46.0" onMouseClicked="#handleMax" prefHeight="42.0" prefWidth="42.0" styleClass="btn_max" stylesheets="@../../css/style.css">
                            <children>
                               <FontAwesomeIcon fill="WHITE" glyphName="SQUARE_ALT" layoutX="11.0" layoutY="29.0" size="2em" />
                            </children>
