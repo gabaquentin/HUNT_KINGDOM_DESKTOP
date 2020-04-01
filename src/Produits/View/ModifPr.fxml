@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="580.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Produits.Controllers.ajoutProduitController">
+<AnchorPane prefHeight="580.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Produits.Controllers.modifProduitController">
    <children>
       <VBox prefHeight="580.0" prefWidth="430.0" style="-fx-background-color: #2c3e50; -fx-border-color: #c2e0ff; -fx-border-width: 3;">
          <children>
             <HBox prefHeight="60.0" prefWidth="430.0" style="-fx-background-color: #F89406;">
                <children>
-                  <Label prefHeight="48.0" prefWidth="176.0" text="Ajout Produit " textFill="WHITE">
+                  <Label prefHeight="48.0" prefWidth="281.0" text="Modification Produit " textFill="WHITE">
                      <font>
                         <Font name="Tahoma Bold" size="24.0" />
                      </font>
@@ -20,12 +20,25 @@
                      </HBox.margin>
                   </Label>
                </children></HBox>
+            <Label alignment="CENTER" layoutX="33.0" layoutY="123.0" prefHeight="31.0" prefWidth="109.0" text="Id:" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="100.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="idP" layoutX="163.0" layoutY="127.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #6c7a89; -fx-border-color: #ffffff;">
+               <VBox.margin>
+                  <Insets left="200.0" right="180.0" top="-27.0" />
+               </VBox.margin>
+            </TextField>
             <Label alignment="CENTER" prefHeight="31.0" prefWidth="109.0" text="Libellé:" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets left="20.0" top="50.0" />
+                  <Insets left="20.0" top="20.0" />
                </VBox.margin>
             </Label>
             <TextField fx:id="nom" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #6c7a89; -fx-border-color: #ffffff;">
@@ -119,7 +132,7 @@
                   <Insets bottom="70.0" />
                </padding>
             </TextField>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#vider" prefHeight="43.0" prefWidth="90.0" style="-fx-background-color: #f22613;" text="Annuler" textFill="WHITE">
+            <Button fx:id="supprimerBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#supprProduit" prefHeight="43.0" prefWidth="97.0" style="-fx-background-color: #f22613;" text="Supprimer" textFill="WHITE">
                <font>
                   <Font name="Tahoma Bold" size="14.0" />
                </font>
@@ -127,7 +140,7 @@
                   <Insets left="95.0" />
                </VBox.margin>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="108.0" layoutY="490.0" mnemonicParsing="false" onAction="#ajoutProduit" prefHeight="43.0" prefWidth="90.0" style="-fx-background-color: #22a7f0;" text="Ajouter" textFill="WHITE">
+            <Button fx:id="modifierBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="108.0" layoutY="490.0" mnemonicParsing="false" onAction="#modifProduit" prefHeight="43.0" prefWidth="95.0" style="-fx-background-color: #22a7f0;" text="Modifier" textFill="WHITE">
                <font>
                   <Font name="Tahoma Bold" size="14.0" />
                </font>
@@ -135,6 +148,10 @@
                   <Insets left="210.0" top="-43.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="chercherBtn" mnemonicParsing="false" onAction="#chercherProduit" text="Chercher">
+               <VBox.margin>
+                  <Insets left="270.0" top="-457.0" />
+               </VBox.margin></Button>
          </children>
       </VBox>
    </children>

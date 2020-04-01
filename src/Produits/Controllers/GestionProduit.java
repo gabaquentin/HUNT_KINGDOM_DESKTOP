@@ -3,6 +3,7 @@ package Produits.Controllers;
 import Produits.Model.Produits;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,15 +13,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
-
-import static javafx.stage.Stage.*;
 
 public class GestionProduit implements Initializable {
     Connection cnx=DataSource.getInstance().getCnx();
@@ -32,6 +30,8 @@ public class GestionProduit implements Initializable {
     @FXML private TableColumn<Produits,Integer>prix;
     @FXML private TableColumn<Produits,Integer>fournisseur;
     @FXML private TableColumn<Produits,String>description;
+    @FXML private Button AjoutBtn;
+    @FXML private Button ModifBtn;
     public ObservableList<Produits> data = FXCollections.observableArrayList();
 
     @FXML
@@ -57,19 +57,10 @@ public class GestionProduit implements Initializable {
         description.setCellValueFactory(new PropertyValueFactory<Produits, String>("description"));
         table.setItems(data);
     }
-    @FXML
-    private void handleButtonAction (ActionEvent event)throws IOException{
-
-        Parent root = FXMLLoader.load(getClass().getResource("../View/AjoutP.fxml"));
-        Scene scene=new Scene(root);
-
-        Stage stage= new Stage();
-        stage.setTitle("Ajout Produit");
-        stage.setScene(new Scene(root, 900, 600));
-        stage.show();
 
 
-    }
+
+
 
 
 
@@ -79,6 +70,35 @@ public class GestionProduit implements Initializable {
 
     }
 
-    public void handleButtonAction(javafx.event.ActionEvent actionEvent) {
+
+    public void fenetreAjout(javafx.event.ActionEvent actionEvent) {
+        try {
+            Stage stage= new Stage() ;
+            Parent root = FXMLLoader.load(getClass().getResource("../View/AjoutP.fxml"));
+
+            stage.setTitle("Ajout Produit");
+            stage.setScene(new Scene(root, 430, 580));
+            stage.show();
+
+            AjoutBtn.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    public void fenetreModif(ActionEvent actionEvent) {
+        try {
+            Stage stage= new Stage() ;
+            Parent root = FXMLLoader.load(getClass().getResource("../View/ModifPr.fxml"));
+
+            stage.setTitle("Modification Produit");
+            stage.setScene(new Scene(root, 430, 580));
+            stage.show();
+
+            ModifBtn.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }
