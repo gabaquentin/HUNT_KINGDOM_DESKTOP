@@ -39,9 +39,10 @@ public class CrudProduit {
     public static int modifP(Produits p)
     {
         int st=0;
+        String req="UPDATE Produits SET nomProduit=?,Quantite=?,categorie=?,prix=?,image=?,fournisseur=?,description=? where id=?";
+        Connection cnx= DataSource.getInstance().getCnx();
         try {
-            String req="UPDATE Produits SET nomProduit=?,Quantite=?,categorie=?,prix=?,image=?,fournisseur=?,description=? where id=?";
-            Connection cnx= DataSource.getInstance().getCnx();
+
             PreparedStatement pst=cnx.prepareStatement(req);
             pst.setInt(1,p.getId());
             pst.setString(2,p.getNomProduit());
