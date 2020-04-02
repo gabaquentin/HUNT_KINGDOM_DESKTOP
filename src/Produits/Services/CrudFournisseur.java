@@ -57,13 +57,37 @@ public class CrudFournisseur {
 
     public static int supprF(int id){
         int st=0;
+        Connection cnx= DataSource.getInstance().getCnx();
         try {
             String req="DELETE FROM fournisseur WHERE id=?";
-            Connection cnx= DataSource.getInstance().getCnx();
+
             PreparedStatement pst=cnx.prepareStatement(req);
             pst.setInt(1,id);
             st=pst.executeUpdate();
-            cnx.close();
+            pst.executeUpdate();
+            //cnx.close();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+
+        return st;
+
+    }
+    public static int modifF(Fournisseurs f){
+        int st=0;
+        Connection cnx= DataSource.getInstance().getCnx();
+        String sql="UPDATE fournisseur SET nomFournisseur=?,idFournisseur=?,emailFournisseur=? where id=? ";
+        try {
+
+            PreparedStatement pst=cnx.prepareStatement(sql);
+            pst.setInt(1,f.getId());
+            pst.setString(2,f.getNomFournisseur());
+            pst.setInt(3,f.getIdFournisseur());
+            pst.setString(4,f.getEmailFournisseur());
+            st= pst.executeUpdate();
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -71,7 +95,6 @@ public class CrudFournisseur {
 
 
         return st;
-
     }
 
 

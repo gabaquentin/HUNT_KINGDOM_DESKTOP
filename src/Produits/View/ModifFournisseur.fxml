@@ -79,7 +79,7 @@
                         <Insets left="150.0" top="90.0" />
                     </VBox.margin>
                 </Button>
-                <Button alignment="CENTER" contentDisplay="CENTER" layoutX="108.0" layoutY="490.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="90.0" style="-fx-background-color: #22a7f0;" text="Modifier" textFill="WHITE">
+                <Button alignment="CENTER" contentDisplay="CENTER" layoutX="108.0" layoutY="490.0" mnemonicParsing="false" onAction="#modifFournisseur" prefHeight="43.0" prefWidth="90.0" style="-fx-background-color: #22a7f0;" text="Modifier" textFill="WHITE">
                     <font>
                         <Font name="Tahoma Bold" size="14.0" />
                     </font>

@@ -32,7 +32,7 @@ public class modifFournisseurController implements Initializable {
 
     }
     public void supprFournisseur(ActionEvent actionEvent) {
-        String sid = idF.getText();
+        String sid = idFrns.getText();
         int id = Integer.parseInt(sid);
         int status = CrudFournisseur.supprF(id);
         if (status > 0) {
@@ -48,6 +48,39 @@ public class modifFournisseurController implements Initializable {
             alert.setContentText("Veuillez Verifier!");
             alert.showAndWait();
         }
+    }
+
+    public void modifFournisseur(ActionEvent event) {
+        String sid =idFrns.getText();
+        int id=Integer.parseInt(sid);
+        String txtnom=nomF.getText();
+        int txtid=Integer.parseInt(idF.getText());
+        String txtmail=emailF.getText();
+        Fournisseurs f=new Fournisseurs();
+        f.setId(id);
+        f.setNomFournisseur(txtnom);
+        f.setIdFournisseur(txtid);
+        f.setEmailFournisseur(txtmail);
+
+        int status=CrudFournisseur.modifF(f);
+
+        if (status > 0) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Succès");
+            alert.setHeaderText("Succès");
+            alert.setContentText("Fournisseur Modifié Avec Succès!");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur");
+            alert.setContentText("Veuillez Verifier!");
+            alert.showAndWait();
+        }
+
+
+
+
     }
 
     @Override
