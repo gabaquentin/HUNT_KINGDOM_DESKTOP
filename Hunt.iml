@@ -11,5 +11,6 @@
     <orderEntry type="library" name="jfoenix-8.0.8" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1.23-bin" level="project" />
     <orderEntry type="library" name="jxbrowser-javafx-7.5" level="project" />
+    <orderEntry type="library" name="java-json" level="project" />
   </component>
 </module>
