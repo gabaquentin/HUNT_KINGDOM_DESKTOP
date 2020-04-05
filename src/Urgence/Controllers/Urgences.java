@@ -75,8 +75,6 @@ public class Urgences implements Initializable {
         //engine.load("http://127.0.0.1:8000/emergency/desk");
     }
 
-
-
     @FXML
     private void showformUrgenceBody(MouseEvent event){
         TranslateTransition slide = new TranslateTransition();
