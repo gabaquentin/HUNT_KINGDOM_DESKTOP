@@ -1,37 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>Marker Animations</title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 50%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
-<script type='text/javascript'>
-    google.charts.load('current', {
-        'packages': ['geochart'],
-        // Note: you will need to get a mapsApiKey for your project.
-        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-        'mapsApiKey': 'AIzaSyD2Ws0KYSjxNXXgRh8jRBGZgrXqgNHzWbI'
-    });
-    google.charts.setOnLoadCallback(drawMarkersMap);
+<div id="map"></div>
+<div id="latt"></div>
+<div id="lon"></div>
+<script>
 
-    function drawMarkersMap() {
-        var data = google.visualization.arrayToDataTable([
-            ['zone',   'urgence(s)', '%'],
-        ['Tunis',      7500,    455],
-    ]);
+    // The following example creates a marker in Stockholm, Sweden using a DROP
+    // animation. Clicking on the marker will toggle the animation between a BOUNCE
+    // animation and no animation.
 
-        var options = {
-            sizeAxis: { minValue: 0, maxValue: 100 },
-            region: 'TN',
-            displayMode: 'markers',
-            colorAxis: {colors: ['green', 'red']}
+    var marker;
+    var latt,lon;
+
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 13,
+            center: {lat: 33.886917, lng: 9.537499}
+        });
+
+        do
+
+        var requestURL = 'http://ip-api.com/json/196.178.88.132';
+        var request = new XMLHttpRequest();
+        request.open('GET', requestURL);
+        request.responseType = 'json';
+        request.send();
+        request.onload = function() {
+            var coord = request.response;
+            GetCoord(coord);
+            // showHeroes(address);
         };
 
-        var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-    };
+        function GetCoord(jsonObj) {
+            // recuperation des addresses place_id et compound_code
+
+            document.getElementById('latt').innerHTML = jsonObj.lat;
+            document.getElementById('lon').innerHTML = jsonObj.lon;
+
+            latt = {
+                lat: jsonObj.lat,
+                lng: jsonObj.lon
+            }
+
+
+        }
+
+        alert( document.getElementById('latt').getAttribute('value'));
+
+            marker = new google.maps.Marker({
+                map: map,
+                draggable: false,
+                animation: google.maps.Animation.DROP,
+                position: latt
+            });
+            marker.addListener('click', toggleBounce);
+
+    }
+
+    function toggleBounce() {
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }
 </script>
-<div id="chart_div" style="width: 100%; height: 500px;"></div>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2Ws0KYSjxNXXgRh8jRBGZgrXqgNHzWbI&callback=initMap">
+</script>
 </body>
 </html>

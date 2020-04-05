@@ -39,7 +39,7 @@
                                     <Font name="FontAwesome Regular" size="24.0" />
                                  </font>
                               </Label>
-                              <JFXTextArea focusColor="#64a09b" layoutX="131.0" layoutY="52.0" prefHeight="78.0" prefWidth="521.0" style="-fx-background-color: #464548;" styleClass="urgenceMessage" stylesheets="@../../css/style.css" unFocusColor="WHITE">
+                              <JFXTextArea focusColor="#64a09b" layoutX="131.0" layoutY="52.0" prefHeight="78.0" prefWidth="521.0" style="-fx-background-color: #464548;" styleClass="input" stylesheets="@../../css/style.css" unFocusColor="WHITE">
                                  <font>
                                     <Font name="FontAwesome Regular" size="15.0" />
                                  </font>
