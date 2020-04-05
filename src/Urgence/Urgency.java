@@ -22,26 +22,5 @@ public class Urgency extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-
-        DataSource ds=DataSource.getInstance();
-
-        System.out.println(ds.hashCode());
-
-        //***********************Ajout************************//
-
-        ExpeditionService Es=new ExpeditionService();
-        Expedition E = Es.find("venomia");
-
-        Urgence U=new Urgence(E,"venomia","36.7278251","10.70978669999999","Yaounde","CHU404","jai peur","23/01/2015","1");
-        UrgenceService Us=new UrgenceService();
-        Us.ajouterExp(U);
-
-        //**********************Suppression**********************//
-
-       // Us.supprimer(U);
-
-        //**********************Affichage***********************//
-        Us.afficher().forEach(System.out::println);
-    }
+        public static void main(String[] args) { launch(args); }
 }

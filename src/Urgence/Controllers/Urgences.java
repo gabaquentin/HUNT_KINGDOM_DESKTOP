@@ -72,7 +72,10 @@ public class Urgences implements Initializable {
         WebEngine engine = mapUrgence.getEngine();
         URL url = this.getClass().getResource("../View/mapUrgence.html");
         engine.load(url.toString());
+        //engine.load("http://127.0.0.1:8000/emergency/desk");
     }
+
+
 
     @FXML
     private void showformUrgenceBody(MouseEvent event){

@@ -32,7 +32,7 @@
                   <AnchorPane prefHeight="767.0" prefWidth="1113.0">
                      <children>
                         <WebView fx:id="mapUrgence" prefHeight="767.0" prefWidth="1113.0" />
-                        <Pane layoutX="316.0" layoutY="558.0" prefHeight="69.0" prefWidth="783.0" style="-fx-background-color: #AACBC8;">
+                        <Pane layoutX="316.0" layoutY="558.0" opacity="0.67" prefHeight="69.0" prefWidth="783.0" style="-fx-background-color: #AACBC8;">
                            <children>
                               <Label layoutX="44.0" layoutY="25.0" text="Pour votre securité, veuillez prendre conaissance des zones a risques indiquées sur cette carte">
                                  <font>
@@ -44,11 +44,33 @@
                         <Pane layoutX="316.0" layoutY="558.0" prefHeight="69.0" prefWidth="9.0" style="-fx-background-color: #D56062;" />
                         <Pane fx:id="formUrgenceBody" layoutX="166.0" layoutY="165.0" opacity="0.88" prefHeight="543.0" prefWidth="783.0" style="-fx-background-color: #464548;">
                            <children>
-                              <JFXButton layoutX="337.0" layoutY="248.0" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #54788B;" text="Envoyer" textFill="WHITE">
+                              <JFXButton layoutX="337.0" layoutY="481.0" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #54788B;" text="Envoyer" textFill="WHITE">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </JFXButton>
+                              <JFXTextField focusColor="#64a09b" labelFloat="true" layoutX="44.0" layoutY="88.0" prefHeight="40.0" prefWidth="695.0" promptText="Nom" styleClass="input" stylesheets="@../../css/style.css" unFocusColor="WHITE">
+                                 <font>
+                                    <Font name="FontAwesome Regular" size="15.0" />
+                                 </font>
+                              </JFXTextField>
+                              <Label layoutX="88.0" layoutY="24.0" text="Alors données quelques informations avant de vous lancer" textFill="WHITE">
+                                 <font>
+                                    <Font name="FontAwesome Regular" size="24.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker layoutX="44.0" layoutY="168.0" prefHeight="40.0" prefWidth="340.0" promptText="Debut de l'expedition" style="-fx-background-color: transparent;" />
+                              <DatePicker layoutX="399.0" layoutY="168.0" prefHeight="40.0" prefWidth="340.0" promptText="Fin de l'expedition" style="-fx-background-color: transparent;" />
+                              <JFXTextField focusColor="#64a09b" labelFloat="true" layoutX="44.0" layoutY="241.0" prefHeight="40.0" prefWidth="695.0" promptText="Ou allez vous ?" styleClass="input" stylesheets="@../../css/style.css" unFocusColor="WHITE">
+                                 <font>
+                                    <Font name="FontAwesome Regular" size="15.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextArea focusColor="#64a09b" labelFloat="true" layoutX="44.0" layoutY="335.0" prefHeight="78.0" prefWidth="700.0" promptText="Avez vous quelques choses a nous dire a propos de votre expedition ?" styleClass="input" stylesheets="@../../css/style.css" unFocusColor="WHITE">
+                                 <font>
+                                    <Font name="FontAwesome Regular" size="15.0" />
+                                 </font>
+                              </JFXTextArea>
                            </children>
                         </Pane>
                         <Pane fx:id="menu" layoutX="-294.0" opacity="0.88" prefHeight="537.0" prefWidth="294.0" style="-fx-background-color: #464548;" styleClass="menu" stylesheets="@../../css/style.css">

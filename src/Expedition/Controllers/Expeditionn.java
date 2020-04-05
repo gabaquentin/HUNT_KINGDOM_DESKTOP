@@ -71,7 +71,8 @@ public class Expeditionn implements Initializable {
         handleDragged();
         WebEngine engine = mapUrgence.getEngine();
         URL url = this.getClass().getResource("../View/mapExpedition.html");
-        engine.load(url.toString());
+        //engine.load(url.toString());
+        engine.load("http://127.0.0.1:8000/emergency/deskExpedition");
     }
 
     @FXML
