@@ -1,6 +1,11 @@
 package Urgence.Controllers;
 
+import Urgence.Model.Urgence;
+import Urgence.Services.UrgenceService;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -14,7 +19,12 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -59,6 +69,14 @@ public class Urgences implements Initializable {
     @FXML
     private FontAwesomeIcon btn_menu_exitbars;
 
+    @FXML
+    private JFXCheckBox expCheck;
+
+    @FXML
+    private JFXTextField plus;
+
+    @FXML
+    private JFXComboBox<String> exp;
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -68,11 +86,37 @@ public class Urgences implements Initializable {
         formUrgenceBody.setOpacity(0);
         formUrgenceBody.setVisible(false);
         formUrgenceBtn1.setVisible(false);
+        plus.setVisible(false);
         handleDragged();
         WebEngine engine = mapUrgence.getEngine();
         URL url = this.getClass().getResource("../View/mapUrgence.html");
         engine.load(url.toString());
         //engine.load("http://127.0.0.1:8000/emergency/desk");
+    }
+
+    @FXML
+    private void add_urgence(MouseEvent event) throws Exception {
+        Urgence U = new Urgence("gaba", get_lat(), get_long(), get_address(), get_placeId(), "domage", "seul", "12/05/2015", "1");
+
+        UrgenceService Us = new UrgenceService();
+
+        Us.ajouter(U);
+
+        Us.afficher().forEach(System.out::println);
+    }
+
+    @FXML
+    private void checkExp(MouseEvent event){
+
+        if(expCheck.isSelected()){
+            plus.setVisible(true);
+            exp.setVisible(false);
+        }
+        else{
+            plus.setVisible(false);
+            exp.setVisible(true);
+        }
+
     }
 
     @FXML
@@ -181,5 +225,158 @@ public class Urgences implements Initializable {
             Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
             s.setOpacity(1.0f);
         }));
+    }
+
+    public static String get_ip() throws Exception {
+        String url = "https://ipapi.co/json/";
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        // optional default is GET
+        con.setRequestMethod("GET");
+        //add request header
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        int responseCode = con.getResponseCode();
+        System.out.println("\nSending 'GET' request to Ip : " + url);
+        System.out.println("Response Code : " + responseCode);
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        //print in String
+        System.out.println(response.toString());
+        //Read JSON response and print
+        JSONObject myResponse = new JSONObject(response.toString());
+        System.out.println("result after Reading JSON Response");
+        System.out.println("ip- "+myResponse.getString("ip"));
+
+        return myResponse.getString("ip");
+    }
+
+    public static double get_lat() throws Exception {
+        String url = "http://ip-api.com/json/"+get_ip();
+        URL obj = new URL(url);
+
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        // optional default is GET
+        con.setRequestMethod("GET");
+        //add request header
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        int responseCode = con.getResponseCode();
+        System.out.println("\nSending 'GET' request to Lat : " + url);
+        System.out.println("Response Code : " + responseCode);
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        //print in String
+        System.out.println(response.toString());
+        //Read JSON response and print
+        JSONObject myResponse = new JSONObject(response.toString());
+        System.out.println("result after Reading JSON Response");
+        System.out.println("lat- "+myResponse.getDouble("lat"));
+
+        return myResponse.getDouble("lat");
+    }
+
+    public static double get_long() throws Exception {
+        String url = "http://ip-api.com/json/"+get_ip();
+        URL obj = new URL(url);
+
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        // optional default is GET
+        con.setRequestMethod("GET");
+        //add request header
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        int responseCode = con.getResponseCode();
+        System.out.println("\nSending 'GET' request to Long : " + url);
+        System.out.println("Response Code : " + responseCode);
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        //print in String
+        System.out.println(response.toString());
+        //Read JSON response and print
+        JSONObject myResponse = new JSONObject(response.toString());
+        System.out.println("result after Reading JSON Response");
+        System.out.println("long- "+myResponse.getDouble("lon"));
+
+        return myResponse.getDouble("lon");
+    }
+
+    public static String get_placeId() throws Exception {
+        String url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ get_lat() +","+ get_long() +"&key=AIzaSyD2Ws0KYSjxNXXgRh8jRBGZgrXqgNHzWbI";
+        URL obj = new URL(url);
+
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        // optional default is GET
+        con.setRequestMethod("GET");
+        //add request header
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        int responseCode = con.getResponseCode();
+        System.out.println("\nSending 'GET' request to Long : " + url);
+        System.out.println("Response Code : " + responseCode);
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        //print in String
+        System.out.println(response.toString());
+        //Read JSON response and print
+        JSONObject myResponse = new JSONObject(response.toString());
+        System.out.println("result after Reading JSON Response");
+        JSONArray results = myResponse.getJSONArray("results");
+        System.out.println("placeId- "+results.getJSONObject(3).getString("place_id"));
+
+
+        return results.getJSONObject(3).getString("place_id");
+    }
+
+    public static String get_address() throws Exception {
+        String url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ get_lat() +","+ get_long() +"&key=AIzaSyD2Ws0KYSjxNXXgRh8jRBGZgrXqgNHzWbI";
+        URL obj = new URL(url);
+
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        // optional default is GET
+        con.setRequestMethod("GET");
+        //add request header
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        int responseCode = con.getResponseCode();
+        System.out.println("\nSending 'GET' request to Long : " + url);
+        System.out.println("Response Code : " + responseCode);
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        //print in String
+        System.out.println(response.toString());
+        //Read JSON response and print
+        JSONObject myResponse = new JSONObject(response.toString());
+        System.out.println("result after Reading JSON Response");
+        JSONObject results = myResponse.getJSONObject("plus_code");
+        System.out.println("address- "+results.getString("compound_code"));
+
+
+        return results.getString("compound_code");
     }
 }

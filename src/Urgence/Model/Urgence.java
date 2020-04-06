@@ -7,8 +7,8 @@ public class Urgence {
     private int id;
     private Expedition expedition;
     private String Utilisateur;
-    private String latitude;
-    private String longitude;
+    private Double latitude;
+    private Double longitude;
     private String addresse;
     private String place_id;
     private String description;
@@ -40,19 +40,19 @@ public class Urgence {
         Utilisateur = utilisateur;
     }
 
-    public String getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public String getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
@@ -104,7 +104,7 @@ public class Urgence {
         this.etat = etat;
     }
 
-    public Urgence(String utilisateur, String latitude, String longitude, String addresse, String place_id, String description, String plus, String date, String etat) {
+    public Urgence(String utilisateur, Double latitude, Double longitude, String addresse, String place_id, String description, String plus, String date, String etat) {
         Utilisateur = utilisateur;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -116,7 +116,7 @@ public class Urgence {
         this.etat = etat;
     }
 
-    public Urgence(int id, Expedition expedition, String utilisateur, String latitude, String longitude, String addresse, String place_id, String description, String plus, String date, String etat) {
+    public Urgence(int id, Expedition expedition, String utilisateur, Double latitude, Double longitude, String addresse, String place_id, String description, String plus, String date, String etat) {
         this.id = id;
         this.expedition = expedition;
         Utilisateur = utilisateur;
@@ -130,7 +130,7 @@ public class Urgence {
         this.etat = etat;
     }
 
-    public Urgence(Expedition expedition, String utilisateur, String latitude, String longitude, String addresse, String place_id, String description, String date, String etat) {
+    public Urgence(Expedition expedition, String utilisateur, Double latitude, Double longitude, String addresse, String place_id, String description, String date, String etat) {
         this.expedition = expedition;
         Utilisateur = utilisateur;
         this.latitude = latitude;

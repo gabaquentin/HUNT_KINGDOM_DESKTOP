@@ -39,18 +39,19 @@
                                     <Font name="FontAwesome Regular" size="24.0" />
                                  </font>
                               </Label>
-                              <JFXTextArea focusColor="#64a09b" layoutX="131.0" layoutY="52.0" prefHeight="78.0" prefWidth="521.0" style="-fx-background-color: #464548;" styleClass="input" stylesheets="@../../css/style.css" unFocusColor="WHITE">
+                              <JFXTextArea fx:id="description" focusColor="#64a09b" layoutX="131.0" layoutY="52.0" prefHeight="78.0" prefWidth="521.0" style="-fx-background-color: #464548;" styleClass="input" stylesheets="@../../css/style.css" unFocusColor="WHITE">
                                  <font>
                                     <Font name="FontAwesome Regular" size="15.0" />
                                  </font>
                               </JFXTextArea>
-                              <JFXCheckBox checkedColor="#64a09b" layoutX="131.0" layoutY="154.0" text="     Cochez cette case si vous n'etiez pas dans une expedition" textFill="WHITE" unCheckedColor="WHITE" />
-                              <JFXButton layoutX="337.0" layoutY="248.0" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #54788B;" text="Envoyer" textFill="WHITE">
+                              <JFXCheckBox fx:id="expCheck" checkedColor="#64a09b" layoutX="131.0" layoutY="154.0" onMouseClicked="#checkExp" text="     Cochez cette case si vous n'etiez pas dans une expedition" textFill="WHITE" unCheckedColor="WHITE" />
+                              <JFXButton fx:id="envoyer" layoutX="337.0" layoutY="248.0" onMouseClicked="#add_urgence" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #54788B;" text="Envoyer" textFill="WHITE">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </JFXButton>
-                              <JFXComboBox focusColor="#64a09b" layoutX="131.0" layoutY="191.0" prefHeight="35.0" prefWidth="526.0" promptText="Le nom de votre expedition" styleClass="urgenceExp" stylesheets="@../../css/style.css" unFocusColor="WHITE" />
+                              <JFXComboBox fx:id="exp" focusColor="#64a09b" labelFloat="true" layoutX="131.0" layoutY="191.0" prefHeight="35.0" prefWidth="526.0" promptText="Le nom de votre expedition" styleClass="input" stylesheets="@../../css/style.css" unFocusColor="WHITE" />
+                              <JFXTextField fx:id="plus" focusColor="#64a09b" layoutX="131.0" layoutY="191.0" prefHeight="35.0" prefWidth="526.0" styleClass="input" stylesheets="@../../css/style.css" unFocusColor="WHITE" />
                            </children>
                         </Pane>
                         <Pane fx:id="menu" layoutX="-294.0" opacity="0.88" prefHeight="537.0" prefWidth="294.0" style="-fx-background-color: #464548;" styleClass="menu" stylesheets="@../../css/style.css">
