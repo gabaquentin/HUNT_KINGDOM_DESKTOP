@@ -15,20 +15,7 @@ public class UrgenceService implements IService<Urgence> {
 
     @Override
     public void ajouter(Urgence U) {
-        String req="insert into urgence(utilisateur,latitude, longitude, adresse, place_id, description, plus, date, etat) values('"+U.getUtilisateur()+"','"+U.getLatitude()+"','"+U.getLongitude()+"','"+U.getAddresse()+"','"+U.getPlace_id()+"','"+U.getDescription()+"','"+U.getPlus()+"','"+U.getDate()+"','"+U.getEtat()+"')";
-        try{
-            Statement st = cnx.createStatement();
-            st.executeUpdate(req);
-            System.out.println("");
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    @Override
-    public void ajouterExp(Urgence U) {
-        String req="insert into urgence(expedition, latitude, longitude, adresse, place_id, description, date, etat) values('1','"+U.getLatitude()+"','"+U.getLongitude()+"','"+U.getAddresse()+"','"+U.getPlace_id()+"','"+U.getDescription()+"','"+U.getDate()+"','"+U.getEtat()+"')";
+        String req="insert into urgence(expedition, utilisateur,latitude, longitude, adresse, place_id, description, plus, date, etat) values('"+U.getExpedition()+"','"+U.getUtilisateur()+"','"+U.getLatitude()+"','"+U.getLongitude()+"','"+U.getAddresse()+"','"+U.getPlace_id()+"','"+U.getDescription()+"','"+U.getPlus()+"','"+U.getDate()+"','"+U.getEtat()+"')";
         try{
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
@@ -67,7 +54,7 @@ public class UrgenceService implements IService<Urgence> {
             PreparedStatement pst=cnx.prepareStatement(req);
             ResultSet rs=pst.executeQuery();
             while (rs.next()){
-                Urgence U=new Urgence(rs.getInt(1), (Expedition) rs.getArray(2),rs.getString(3),rs.getDouble(4),rs.getDouble(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11));
+                Urgence U=new Urgence(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getDouble(7),rs.getDouble(8),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(9),rs.getString(10),rs.getString(11));
                 list.add(U);
             }
         } catch (SQLException e) {

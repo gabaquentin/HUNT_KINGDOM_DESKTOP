@@ -1,16 +1,16 @@
 package Urgence.Controllers;
 
+import Expedition.Services.ExpeditionService;
 import Urgence.Model.Urgence;
 import Urgence.Services.UrgenceService;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -26,6 +26,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class Urgences implements Initializable {
@@ -78,6 +81,18 @@ public class Urgences implements Initializable {
     @FXML
     private JFXComboBox<String> exp;
 
+    @FXML
+    private Pane erreur;
+
+    @FXML
+    private Pane succes;
+
+    @FXML
+    private Label text_erreur;
+
+    @FXML
+    private JFXTextArea description;
+
     @Override
     public void initialize(URL location, ResourceBundle resources){
 
@@ -87,6 +102,20 @@ public class Urgences implements Initializable {
         formUrgenceBody.setVisible(false);
         formUrgenceBtn1.setVisible(false);
         plus.setVisible(false);
+        erreur.setVisible(false);
+        succes.setVisible(false);
+
+        ExpeditionService Es = new ExpeditionService();
+
+        int size = Es.afficher().size();
+
+        for(int i=0; i< size ; i++ ){
+
+            exp.getItems().addAll(Es.afficher().get(i).getNom());
+
+        }
+
+        exp.getSelectionModel().select(Es.afficher().get(0).getNom());
         handleDragged();
         WebEngine engine = mapUrgence.getEngine();
         URL url = this.getClass().getResource("../View/mapUrgence.html");
@@ -96,21 +125,107 @@ public class Urgences implements Initializable {
 
     @FXML
     private void add_urgence(MouseEvent event) throws Exception {
-        Urgence U = new Urgence("gaba", get_lat(), get_long(), get_address(), get_placeId(), "domage", "seul", "12/05/2015", "1");
 
-        UrgenceService Us = new UrgenceService();
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        Calendar cal = Calendar.getInstance();
+        System.out.println(dateFormat.format(cal.getTime()));
 
-        Us.ajouter(U);
+        if(description.getText().trim().isEmpty()){
 
+            erreur.setVisible(true);
+        }
+
+        else{
+
+            if(expCheck.isSelected()){
+                if(plus.getText().trim().isEmpty()){
+                    erreur.setVisible(true);
+                }
+                else{
+
+
+                        erreur.setVisible(false);
+
+                        ExpeditionService Es = new ExpeditionService();
+                        Urgence U = new Urgence(Es.find(exp.getValue()),"gaba", get_lat(), get_long(), get_address(), get_placeId(), description.getText(), plus.getText(), dateFormat.format(cal.getTime()), "1");
+
+                        UrgenceService Us = new UrgenceService();
+
+                        Us.ajouter(U);
+
+                    plus.setText("");
+                    description.setText("");
+
+                    MouseEvent event1 = null;
+                    closeformUrgenceBody(event1);
+
+                    succes.setVisible(true);
+                    FadeTransition fade = new FadeTransition();
+                    fade.setDuration(Duration.millis(5000));
+                    fade.setFromValue(0);
+                    fade.setToValue(1);
+                    fade.setCycleCount(2);
+                    fade.setAutoReverse(true);
+                    fade.setNode(succes);
+                    fade.play();
+
+                }
+            }
+            else{
+
+                if(exp.getValue().equals("selectionnez une expedition"))
+                {
+                    erreur.setVisible(true);
+                }
+                else {
+                    erreur.setVisible(false);
+
+                    ExpeditionService Es = new ExpeditionService();
+                    Urgence U = new Urgence(Es.find(exp.getValue()), "gaba", get_lat(), get_long(), get_address(), get_placeId(), description.getText(), plus.getText(), dateFormat.format(cal.getTime()), "0");
+
+                    UrgenceService Us = new UrgenceService();
+
+                    Us.ajouter(U);
+
+                    exp.getSelectionModel().select(Es.afficher().get(0).getNom());
+                    description.setText("");
+
+                    MouseEvent event1 = null;
+
+                    closeformUrgenceBody(event1);
+
+                    succes.setVisible(true);
+                    FadeTransition fade = new FadeTransition();
+                    fade.setDuration(Duration.millis(5000));
+                    fade.setFromValue(0);
+                    fade.setToValue(1);
+                    fade.setCycleCount(2);
+                    fade.setAutoReverse(true);
+                    fade.setNode(succes);
+                    fade.play();
+                }
+            }
+
+        }
+
+        /*
+        System.out.println(Es.find(exp.getValue()));
+        System.out.println(exp.getValue());
         Us.afficher().forEach(System.out::println);
+        Es.afficher().forEach(System.out::println);
+
+         */
+
     }
 
     @FXML
     private void checkExp(MouseEvent event){
 
         if(expCheck.isSelected()){
+            ExpeditionService Es = new ExpeditionService();
             plus.setVisible(true);
             exp.setVisible(false);
+            exp.getSelectionModel().select(Es.afficher().get(0).getNom());
         }
         else{
             plus.setVisible(false);

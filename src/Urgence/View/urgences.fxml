@@ -32,6 +32,27 @@
                   <AnchorPane prefHeight="767.0" prefWidth="1113.0">
                      <children>
                         <WebView fx:id="mapUrgence" prefHeight="767.0" prefWidth="1113.0" />
+                        <Pane fx:id="succes" layoutX="312.0" layoutY="313.0" prefHeight="200.0" prefWidth="489.0" style="-fx-background-color: #67CE86;">
+                           <children>
+                              <Label layoutX="147.0" layoutY="14.0" prefHeight="30.0" prefWidth="195.0" text="Urgence  envoyé avec succés" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="FontAwesome Regular" size="15.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIcon fill="WHITE" glyphName="AMBULANCE" layoutX="211.0" layoutY="176.0" size="5em" wrappingWidth="67.71428489685059" />
+                              <Label layoutX="21.0" layoutY="78.0" prefHeight="30.0" prefWidth="451.0" text="Gardez votre calme une equipe de secouristes est déja en route" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="FontAwesome Regular" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
                         <Pane fx:id="formUrgenceBody" layoutX="166.0" layoutY="413.0" opacity="0.88" prefHeight="295.0" prefWidth="783.0" style="-fx-background-color: #464548;">
                            <children>
                               <Label layoutX="262.0" layoutY="14.0" text="Quel est votre situation ?" textFill="WHITE">
@@ -50,8 +71,21 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </JFXButton>
-                              <JFXComboBox fx:id="exp" focusColor="#64a09b" labelFloat="true" layoutX="131.0" layoutY="191.0" prefHeight="35.0" prefWidth="526.0" promptText="Le nom de votre expedition" styleClass="input" stylesheets="@../../css/style.css" unFocusColor="WHITE" />
-                              <JFXTextField fx:id="plus" focusColor="#64a09b" layoutX="131.0" layoutY="191.0" prefHeight="35.0" prefWidth="526.0" styleClass="input" stylesheets="@../../css/style.css" unFocusColor="WHITE" />
+                              <JFXComboBox fx:id="exp" focusColor="#64a09b" labelFloat="true" layoutX="131.0" layoutY="191.0" prefHeight="35.0" prefWidth="526.0" stylesheets="@../../css/style.css" unFocusColor="WHITE">
+                                 <styleClass>
+                                    <String fx:value="input" />
+                                    <String fx:value="combo-box" />
+                                 </styleClass></JFXComboBox>
+                              <JFXTextField fx:id="plus" focusColor="#64a09b" labelFloat="true" layoutX="131.0" layoutY="191.0" prefHeight="35.0" prefWidth="526.0" promptText="Vous etes accompagné(e) / seul(e)" styleClass="input" stylesheets="@../../css/style.css" unFocusColor="WHITE" />
+                              <Pane fx:id="erreur" layoutX="172.0" layoutY="-51.0" prefHeight="53.0" prefWidth="439.0" style="-fx-background-color: #464548;">
+                                 <children>
+                                    <Label fx:id="text_erreur" layoutX="37.0" layoutY="19.0" text="Erreur !!! Veuillez verifier que le formulaire est bien saisi" textFill="#fc5c5c">
+                                       <font>
+                                          <Font name="FontAwesome Regular" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
                            </children>
                         </Pane>
                         <Pane fx:id="menu" layoutX="-294.0" opacity="0.88" prefHeight="537.0" prefWidth="294.0" style="-fx-background-color: #464548;" styleClass="menu" stylesheets="@../../css/style.css">
