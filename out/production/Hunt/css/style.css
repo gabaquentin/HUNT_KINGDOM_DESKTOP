@@ -27,6 +27,11 @@
 .input{
     -fx-text-fill: #fff;
 }
+
+.combo-box > .list-cell{
+    -fx-text-fill: white;
+}
+
 .urgenceExp{
     -fx-text-fill: #fff;
 }

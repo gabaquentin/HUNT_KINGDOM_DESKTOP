@@ -24,19 +24,23 @@ public class ExpeditionService implements IService<Expedition> {
         }
     }
 
+
     @Override
-    public Expedition find(String nom) {
-        Expedition Exp = null;
-        String req = "SELECT id FROM expedition WHERE nom = "+nom;
+    public int find(String nom) {
+        int id = 0;
+        String req = "SELECT * FROM expedition WHERE nom = '"+nom+"'";
         try {
             PreparedStatement pst = cnx.prepareStatement(req);
             ResultSet rs = pst.executeQuery();
-            Expedition E = new Expedition(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
-            Exp = E;
+            if(rs.next()){
+                id = rs.getInt(1);
+            }
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return Exp;
+
+        return id;
     }
 
     @Override

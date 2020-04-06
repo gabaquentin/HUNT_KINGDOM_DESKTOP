@@ -5,7 +5,7 @@ import Expedition.Model.Expedition;
 public class Urgence {
 
     private int id;
-    private Expedition expedition;
+    private int expedition;
     private String Utilisateur;
     private Double latitude;
     private Double longitude;
@@ -24,11 +24,12 @@ public class Urgence {
         this.id = id;
     }
 
-    public Expedition getExpedition() {
+
+    public int getExpedition() {
         return expedition;
     }
 
-    public void setExpedition(Expedition expedition) {
+    public void setExpedition(int expedition) {
         this.expedition = expedition;
     }
 
@@ -116,7 +117,7 @@ public class Urgence {
         this.etat = etat;
     }
 
-    public Urgence(int id, Expedition expedition, String utilisateur, Double latitude, Double longitude, String addresse, String place_id, String description, String plus, String date, String etat) {
+    public Urgence(int id, int expedition, String utilisateur, Double latitude, Double longitude, String addresse, String place_id, String description, String plus, String date, String etat) {
         this.id = id;
         this.expedition = expedition;
         Utilisateur = utilisateur;
@@ -130,7 +131,7 @@ public class Urgence {
         this.etat = etat;
     }
 
-    public Urgence(Expedition expedition, String utilisateur, Double latitude, Double longitude, String addresse, String place_id, String description, String date, String etat) {
+    public Urgence(int expedition, String utilisateur, Double latitude, Double longitude, String addresse, String place_id, String description,String plus, String date, String etat) {
         this.expedition = expedition;
         Utilisateur = utilisateur;
         this.latitude = latitude;
@@ -138,6 +139,7 @@ public class Urgence {
         this.addresse = addresse;
         this.place_id = place_id;
         this.description = description;
+        this.plus = plus;
         this.date = date;
         this.etat = etat;
     }
@@ -146,7 +148,7 @@ public class Urgence {
     public String toString() {
         return "Urgence{" +
                 "id=" + id +
-                ", expedition=" + expedition.getNom() +
+                ", expedition=" + expedition +
                 ", Utilisateur='" + Utilisateur + '\'' +
                 ", latitude='" + latitude + '\'' +
                 ", longitude='" + longitude + '\'' +
