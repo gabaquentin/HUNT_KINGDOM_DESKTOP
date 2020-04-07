@@ -3,13 +3,17 @@ package Urgence.Controllers;
 import Expedition.Services.ExpeditionService;
 import Urgence.Model.Urgence;
 import Urgence.Services.UrgenceService;
+import User.Controllers.Loading;
 import com.jfoenix.controls.*;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -18,11 +22,13 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -30,6 +36,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Urgences implements Initializable {
 
@@ -93,6 +101,18 @@ public class Urgences implements Initializable {
     @FXML
     private JFXTextArea description;
 
+    @FXML
+    private Pane rigthPanel;
+
+    @FXML
+    private Pane rigthSticksPanel;
+
+    @FXML
+    private Pane expedition;
+
+    @FXML
+    private Pane rigthSticksPanel1;
+
     @Override
     public void initialize(URL location, ResourceBundle resources){
 
@@ -104,6 +124,8 @@ public class Urgences implements Initializable {
         plus.setVisible(false);
         erreur.setVisible(false);
         succes.setVisible(false);
+        rigthPanel.setVisible(false);
+        rigthSticksPanel1.setVisible(false);
 
         ExpeditionService Es = new ExpeditionService();
 
@@ -121,6 +143,23 @@ public class Urgences implements Initializable {
         URL url = this.getClass().getResource("../View/mapUrgence.html");
         engine.load(url.toString());
         //engine.load("http://127.0.0.1:8000/emergency/desk");
+    }
+
+    @FXML
+    private void expedition(MouseEvent event){
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("../../Expedition/View/expeditions.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(Loading.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.show();
+        parent.getScene().getWindow().hide();
     }
 
     @FXML
@@ -169,6 +208,10 @@ public class Urgences implements Initializable {
                     fade.setNode(succes);
                     fade.play();
 
+                    fade.setOnFinished((e ->{
+                        succes.setVisible(false);
+                    } ));
+
                 }
             }
             else{
@@ -203,6 +246,10 @@ public class Urgences implements Initializable {
                     fade.setAutoReverse(true);
                     fade.setNode(succes);
                     fade.play();
+
+                    fade.setOnFinished((e ->{
+                        succes.setVisible(false);
+                    } ));
                 }
             }
 
@@ -232,6 +279,44 @@ public class Urgences implements Initializable {
             exp.setVisible(true);
         }
 
+    }
+
+    @FXML
+    private void showRigthPanel(MouseEvent event){
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.7));
+        slide.setNode(rigthSticksPanel);
+
+        slide.setToX(-200);
+        slide.play();
+
+        //rigthPanel.setOpacity(1);
+        rigthPanel.setVisible(true);
+
+        slide.setOnFinished((e ->{
+            rigthSticksPanel1.setVisible(true);
+            rigthSticksPanel.setVisible(false);
+
+        } ));
+    }
+
+    @FXML
+    private void closeRigthPanel(MouseEvent event){
+        rigthSticksPanel.setVisible(true);
+        rigthSticksPanel1.setVisible(false);
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.7));
+        slide.setNode(rigthSticksPanel);
+
+        slide.setToX(0);
+        slide.play();
+
+        //rigthPanel.setOpacity(1);
+        rigthPanel.setVisible(false);
+
+        slide.setOnFinished((e ->{
+
+        } ));
     }
 
     @FXML

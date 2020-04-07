@@ -11,9 +11,9 @@ public class Expedition {
     private String message;
     private String lieux;
     private String type;
-    private String utilisateur;
+    private int utilisateur;
 
-    public Expedition(int id, String nom, String statut, String dateDebut, String dateFin, String date, String message, String lieux, String type, String utilisateur) {
+    public Expedition(int id, String nom, String statut, String dateDebut, String dateFin, String date, String message, String lieux, String type, int utilisateur) {
         this.id = id;
         this.nom = nom;
         this.statut = statut;
@@ -26,7 +26,7 @@ public class Expedition {
         this.utilisateur = utilisateur;
     }
 
-    public Expedition(String nom, String statut, String dateDebut, String dateFin, String date, String message, String lieux, String type) {
+    public Expedition(String nom, String statut, String dateDebut, String dateFin, String date, String message, String lieux, String type, int utilisateur) {
         this.nom = nom;
         this.statut = statut;
         this.dateDebut = dateDebut;
@@ -125,11 +125,11 @@ public class Expedition {
         this.type = type;
     }
 
-    public String getUtilisateur() {
+    public int getUtilisateur() {
         return utilisateur;
     }
 
-    public void setUtilisateur(String utilisateur) {
+    public void setUtilisateur(int utilisateur) {
         this.utilisateur = utilisateur;
     }
 }
