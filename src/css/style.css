@@ -24,9 +24,30 @@
     -fx-background-color: gray;
 }
 
-.urgenceMessage{
+.input{
     -fx-text-fill: #fff;
 }
+
+.combo-box > .list-cell{
+    -fx-text-fill: white;
+}
+
 .urgenceExp{
     -fx-text-fill: #fff;
+}
+
+
+
+.btns{
+    -fx-background-color: transparent;
+}
+.btns:hover{
+    -fx-background-color: #85D49E;
+}
+
+.btns_close{
+    -fx-background-color: transparent;
+}
+.btns_close:hover{
+    -fx-background-color: #D56062;
 }

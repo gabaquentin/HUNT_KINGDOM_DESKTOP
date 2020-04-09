@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.web.*?>
-<?import javafx.geometry.*?>
-<?import de.jensd.fx.glyphs.fontawesome.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
 
-<StackPane fx:id="parent" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Urgence.Controllers.Urgences">
+<StackPane fx:id="parent" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Urgence.Controllers.Urgences">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <bottom>
@@ -31,7 +40,28 @@
                <children>
                   <AnchorPane prefHeight="767.0" prefWidth="1113.0">
                      <children>
-                        <WebView fx:id="mapUrgence" prefHeight="767.0" prefWidth="1113.0" />
+                        <WebView fx:id="mapUrgence" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="1113.0" />
+                        <Pane fx:id="succes" layoutX="312.0" layoutY="313.0" prefHeight="200.0" prefWidth="489.0" style="-fx-background-color: #67CE86;">
+                           <children>
+                              <Label layoutX="147.0" layoutY="14.0" prefHeight="30.0" prefWidth="195.0" text="Urgence  envoyé avec succés" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="FontAwesome Regular" size="15.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIcon fill="WHITE" glyphName="AMBULANCE" layoutX="211.0" layoutY="176.0" size="5em" wrappingWidth="67.71428489685059" />
+                              <Label layoutX="21.0" layoutY="78.0" prefHeight="30.0" prefWidth="451.0" text="Gardez votre calme une equipe de secouristes est déja en route" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="FontAwesome Regular" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
                         <Pane fx:id="formUrgenceBody" layoutX="166.0" layoutY="413.0" opacity="0.88" prefHeight="295.0" prefWidth="783.0" style="-fx-background-color: #464548;">
                            <children>
                               <Label layoutX="262.0" layoutY="14.0" text="Quel est votre situation ?" textFill="WHITE">
@@ -39,18 +69,32 @@
                                     <Font name="FontAwesome Regular" size="24.0" />
                                  </font>
                               </Label>
-                              <JFXTextArea focusColor="#64a09b" layoutX="131.0" layoutY="52.0" prefHeight="78.0" prefWidth="521.0" style="-fx-background-color: #464548;" styleClass="urgenceMessage" stylesheets="@../../css/style.css" unFocusColor="WHITE">
+                              <JFXTextArea fx:id="description" focusColor="#64a09b" layoutX="131.0" layoutY="52.0" prefHeight="78.0" prefWidth="521.0" style="-fx-background-color: #464548;" styleClass="input" stylesheets="@../../css/style.css" unFocusColor="WHITE">
                                  <font>
                                     <Font name="FontAwesome Regular" size="15.0" />
                                  </font>
                               </JFXTextArea>
-                              <JFXCheckBox checkedColor="#64a09b" layoutX="131.0" layoutY="154.0" text="     Cochez cette case si vous n'etiez pas dans une expedition" textFill="WHITE" unCheckedColor="WHITE" />
-                              <JFXButton layoutX="337.0" layoutY="248.0" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #54788B;" text="Envoyer" textFill="WHITE">
+                              <JFXCheckBox fx:id="expCheck" checkedColor="#64a09b" layoutX="131.0" layoutY="154.0" onMouseClicked="#checkExp" text="     Cochez cette case si vous n'etiez pas dans une expedition" textFill="WHITE" unCheckedColor="WHITE" />
+                              <JFXButton fx:id="envoyer" layoutX="337.0" layoutY="248.0" onMouseClicked="#add_urgence" prefHeight="33.0" prefWidth="109.0" style="-fx-background-color: #54788B;" text="Envoyer" textFill="WHITE">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </JFXButton>
-                              <JFXComboBox focusColor="#64a09b" layoutX="131.0" layoutY="191.0" prefHeight="35.0" prefWidth="526.0" promptText="Le nom de votre expedition" styleClass="urgenceExp" stylesheets="@../../css/style.css" unFocusColor="WHITE" />
+                              <JFXComboBox fx:id="exp" focusColor="#64a09b" labelFloat="true" layoutX="131.0" layoutY="191.0" prefHeight="35.0" prefWidth="526.0" stylesheets="@../../css/style.css" unFocusColor="WHITE">
+                                 <styleClass>
+                                    <String fx:value="input" />
+                                    <String fx:value="combo-box" />
+                                 </styleClass></JFXComboBox>
+                              <JFXTextField fx:id="plus" focusColor="#64a09b" labelFloat="true" layoutX="131.0" layoutY="191.0" prefHeight="35.0" prefWidth="526.0" promptText="Vous etes accompagné(e) / seul(e)" styleClass="input" stylesheets="@../../css/style.css" unFocusColor="WHITE" />
+                              <Pane fx:id="erreur" layoutX="172.0" layoutY="-51.0" prefHeight="53.0" prefWidth="439.0" style="-fx-background-color: #464548;">
+                                 <children>
+                                    <Label fx:id="text_erreur" layoutX="37.0" layoutY="19.0" text="Erreur !!! Veuillez verifier que le formulaire est bien saisi" textFill="#fc5c5c">
+                                       <font>
+                                          <Font name="FontAwesome Regular" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
                            </children>
                         </Pane>
                         <Pane fx:id="menu" layoutX="-294.0" opacity="0.88" prefHeight="537.0" prefWidth="294.0" style="-fx-background-color: #464548;" styleClass="menu" stylesheets="@../../css/style.css">
@@ -135,6 +179,34 @@
                            </font>
                         </JFXButton>
                         <Pane fx:id="formUrgenceBar" layoutX="166.0" layoutY="753.0" prefHeight="14.0" prefWidth="782.0" style="-fx-background-color: #464548;" />
+                        <Pane fx:id="rigthPanel" layoutX="913.0" layoutY="127.0" opacity="0.62" prefHeight="74.0" prefWidth="200.0" style="-fx-background-color: #B9E8C8;">
+                           <children>
+                              <Pane fx:id="expedition" layoutX="14.0" layoutY="16.0" onMouseClicked="#expedition" prefHeight="42.0" prefWidth="160.0" style="-fx-border-color: #fff; -fx-border-radius: 10; -fx-background-color: #464548; -fx-background-radius: 10;">
+                                 <children>
+                                    <Label layoutX="43.0" layoutY="6.0" prefHeight="30.0" prefWidth="75.0" text="Expedition" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="FontAwesome Regular" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Pane>
+                           </children></Pane>
+                        <Pane fx:id="rigthSticksPanel" layoutX="1097.0" layoutY="127.0" onMouseClicked="#showRigthPanel" prefHeight="74.0" prefWidth="17.0" style="-fx-background-color: #67CE86;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Pane>
+                        <Pane fx:id="rigthSticksPanel1" layoutX="896.0" layoutY="127.0" onMouseClicked="#closeRigthPanel" prefHeight="74.0" prefWidth="17.0" style="-fx-background-color: #fc5c5c;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Pane>
                      </children>
                   </AnchorPane>
                </children>
