@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CrudFournisseur {
 
@@ -95,6 +97,23 @@ public class CrudFournisseur {
 
 
         return st;
+    }
+
+    public List<Fournisseurs> afficher(){
+        List<Fournisseurs> list= new ArrayList<>();
+        Connection cnx= DataSource.getInstance().getCnx();
+        String req="SELECT * FROM fournisseur";
+        try {
+            PreparedStatement pst=cnx.prepareStatement(req);
+            ResultSet rs=pst.executeQuery();
+            while (rs.next()){
+                Fournisseurs f=(new Fournisseurs(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4)));
+                list.add(f);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
     }
 
 

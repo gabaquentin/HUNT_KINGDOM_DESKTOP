@@ -1,6 +1,7 @@
 package Produits.Controllers;
 
 import Produits.Model.Produits;
+import Produits.Services.CrudFournisseur;
 import Produits.Services.CrudProduit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,11 +11,29 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import sun.security.provider.MD5;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
+import javax.activation.*;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+
+
+
+
+
 
 public class ajoutProduitController implements Initializable {
     @FXML private TextField nom;
@@ -24,15 +43,26 @@ public class ajoutProduitController implements Initializable {
     @FXML private ComboBox<Integer> frns;
     @FXML private TextField desc;
     @FXML private TextField img;
+    @FXML private Button JoindreBtn;
     private ObservableList<String> list = FXCollections.observableArrayList("chasse animal","chasse au fusil","peche","peche SS");
     private ObservableList<Integer> frn = FXCollections.observableArrayList(7);
     private ObservableList<Integer> items = FXCollections.observableArrayList(1, 2, 3);
 
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ctg.setItems(list);
-        frns.setItems(frn);
+
+        CrudFournisseur fr =new CrudFournisseur();
+        int size= fr.afficher().size();
+
+        for (int i=0; i<size ;i++){
+            frns.getItems().addAll(fr.afficher().get(i).getId());
+            //jointure
+        }
+
+
 
     }
 
@@ -44,10 +74,31 @@ public class ajoutProduitController implements Initializable {
         desc.clear();
     }
 
+    public void joindre(javafx.event.ActionEvent event) throws IOException {
+        FileChooser fc = new FileChooser();
+        File selectedFile = fc.showOpenDialog(null);
+
+
+
+
+
+        if(selectedFile != null){
+            img.setText(selectedFile.getName()); //le chemin absolu de l'image!
+
+
+
+
+
+        }else {
+            System.out.println("file is not valid!");
+        }
+    }
+
+
     public void ajoutProduit(javafx.event.ActionEvent actionEvent) {
         String nomProduit= nom.getText();
         int quantite= Integer.parseInt(qte.getText());
-        String categorie= ctg.toString();
+        String categorie= ctg.getValue();
         int prix= Integer.parseInt(prx.getText());
         int fournisseur=frns.getValue();
         String description=desc.getText();
@@ -80,4 +131,6 @@ public class ajoutProduitController implements Initializable {
 
         }
     }
+
+
 }

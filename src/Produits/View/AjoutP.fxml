@@ -101,7 +101,7 @@
                   <Insets left="150.0" right="70.0" top="13.0" />
                </VBox.margin>
             </TextField>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" style="-fx-border-color: #ffffff;" text="...">
+            <Button mnemonicParsing="false" onAction="#joindre" prefHeight="25.0" prefWidth="24.0" style="-fx-border-color: #ffffff;" text="...">
                <VBox.margin>
                   <Insets left="360.0" top="-27.0" />
                </VBox.margin>
