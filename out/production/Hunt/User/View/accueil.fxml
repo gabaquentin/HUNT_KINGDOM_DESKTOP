@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import de.jensd.fx.glyphs.fontawesome.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<StackPane fx:id="parent" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.Controllers.Accueil">
+<StackPane fx:id="parent" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.Controllers.Accueil">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <top>
@@ -61,7 +59,7 @@
          <center>
             <AnchorPane prefHeight="788.0" prefWidth="1113.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane prefHeight="767.0" prefWidth="1113.0">
+                  <AnchorPane fx:id="body" prefHeight="767.0" prefWidth="1113.0">
                      <children>
                         <Pane fx:id="menu" layoutX="-294.0" prefHeight="537.0" prefWidth="294.0" style="-fx-background-color: #464548;" styleClass="menu" stylesheets="@../../css/style.css">
                            <children>
@@ -106,7 +104,7 @@
                                     </Label>
                                  </children>
                               </Pane>
-                              <Pane layoutY="227.0" prefHeight="42.0" prefWidth="293.0" styleClass="menu_link" stylesheets="@../../css/style.css">
+                              <Pane fx:id="emergency" layoutY="227.0" onMouseClicked="#emergency" prefHeight="42.0" prefWidth="293.0" styleClass="menu_link" stylesheets="@../../css/style.css">
                                  <children>
                                     <FontAwesomeIcon fill="WHITE" glyphName="AMBULANCE" layoutX="12.0" layoutY="31.0" size="2em" />
                                     <Label layoutX="95.0" layoutY="6.0" prefHeight="30.0" prefWidth="103.0" text="URGENCES" textFill="WHITE">

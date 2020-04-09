@@ -312,10 +312,9 @@ public class Urgences implements Initializable {
         slide.play();
 
         //rigthPanel.setOpacity(1);
-        rigthPanel.setVisible(false);
 
         slide.setOnFinished((e ->{
-
+            rigthPanel.setVisible(false);
         } ));
     }
 
