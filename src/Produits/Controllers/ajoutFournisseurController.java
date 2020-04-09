@@ -23,11 +23,13 @@ public class ajoutFournisseurController implements Initializable {
 
     }
 
+
     public void vider(){
         nomF.clear();
         idF.clear();
         emailF.clear();
     }
+
 
 
     public void ajoutFournisseur(javafx.event.ActionEvent actionEvent) {
