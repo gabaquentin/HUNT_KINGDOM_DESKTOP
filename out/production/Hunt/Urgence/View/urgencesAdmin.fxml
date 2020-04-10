@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -68,7 +69,7 @@
                            <children>
                               <Pane prefHeight="49.0" prefWidth="814.0" style="-fx-background-color: #fff;">
                                  <effect>
-                                    <DropShadow blurType="ONE_PASS_BOX" color="#bcbaba" height="10.0" radius="4.5" width="10.0" />
+                                    <DropShadow blurType="ONE_PASS_BOX" color="#e4e1e1" height="10.0" radius="4.5" width="10.0" />
                                  </effect>
                                  <children>
                                     <Label layoutX="44.0" layoutY="15.0" text="SERVICE PREVENTION" textFill="#7c7c7c">
@@ -117,7 +118,7 @@
                               </Pane>
                               <Pane prefHeight="718.0" prefWidth="813.0" style="-fx-background-color: #fff;">
                                  <children>
-                                    <Pane fx:id="sp_menu" layoutY="278.0" prefHeight="129.0" prefWidth="300.0" style="-fx-background-color: #58C47A;">
+                                    <Pane fx:id="sp_menu" layoutX="-300.0" layoutY="278.0" prefHeight="129.0" prefWidth="300.0" style="-fx-background-color: #58C47A;">
                                        <children>
                                           <HBox fx:id="sp_close" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#closespmenu" prefHeight="40.0" prefWidth="300.0" spacing="8.0" styleClass="btns_close" stylesheets="@../../css/style.css">
                                              <children>
@@ -178,6 +179,11 @@
                                           </HBox>
                                        </children>
                                     </Pane>
+                                    <JFXTreeTableView fx:id="urgence_table" layoutX="26.0" layoutY="62.0" prefHeight="69.0" prefWidth="760.0">
+                                       <effect>
+                                          <DropShadow blurType="ONE_PASS_BOX" color="#f8f6f6" height="10.0" radius="4.5" width="10.0" />
+                                       </effect>
+                                    </JFXTreeTableView>
                                  </children>
                               </Pane>
                            </children>
@@ -216,7 +222,7 @@
                                     <Insets top="15.0" />
                                  </VBox.margin>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="142.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" spacing="8.0" styleClass="btns" stylesheets="@../../css/style.css">
+                              <HBox fx:id="dashboard" alignment="CENTER_LEFT" layoutX="10.0" layoutY="142.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#dashboard" prefHeight="40.0" prefWidth="300.0" spacing="8.0" styleClass="btns" stylesheets="@../../css/style.css">
                                  <children>
                                     <FontAwesomeIcon glyphName="DASHBOARD" glyphStyle="-fx-fill:#fff" size="1.3em" />
                                     <Label text="DASHBOARD" textFill="WHITE">
