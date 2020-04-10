@@ -117,7 +117,7 @@
                               </Pane>
                               <Pane prefHeight="718.0" prefWidth="813.0" style="-fx-background-color: #fff;">
                                  <children>
-                                    <Pane fx:id="sp_menu" layoutY="278.0" prefHeight="129.0" prefWidth="300.0" style="-fx-background-color: #58C47A;">
+                                    <Pane fx:id="sp_menu" layoutX="-299.0" layoutY="278.0" prefHeight="129.0" prefWidth="300.0" style="-fx-background-color: #58C47A;">
                                        <children>
                                           <HBox fx:id="sp_close" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#closespmenu" prefHeight="40.0" prefWidth="300.0" spacing="8.0" styleClass="btns_close" stylesheets="@../../css/style.css">
                                              <children>
@@ -216,7 +216,7 @@
                                     <Insets top="15.0" />
                                  </VBox.margin>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="142.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" spacing="8.0" styleClass="btns" stylesheets="@../../css/style.css">
+                              <HBox fx:id="dashboard" alignment="CENTER_LEFT" layoutX="10.0" layoutY="142.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#dashboard" prefHeight="40.0" prefWidth="300.0" spacing="8.0" styleClass="btns" stylesheets="@../../css/style.css">
                                  <children>
                                     <FontAwesomeIcon glyphName="DASHBOARD" glyphStyle="-fx-fill:#fff" size="1.3em" />
                                     <Label text="DASHBOARD" textFill="WHITE">

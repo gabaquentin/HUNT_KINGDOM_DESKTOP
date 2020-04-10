@@ -23,7 +23,7 @@ public class Urgency extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../Urgence/View/urgencesAdmin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Urgence/View/urgences.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();

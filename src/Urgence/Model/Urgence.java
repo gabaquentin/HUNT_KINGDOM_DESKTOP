@@ -1,8 +1,9 @@
 package Urgence.Model;
 
 import Expedition.Model.Expedition;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
-public class Urgence {
+public class Urgence extends RecursiveTreeObject<Urgence> {
 
     private int id;
     private int expedition;
@@ -103,6 +104,12 @@ public class Urgence {
 
     public void setEtat(String etat) {
         this.etat = etat;
+    }
+
+    public Urgence(int id, int expedition, String utilisateur) {
+        this.id = id;
+        this.expedition = expedition;
+        Utilisateur = utilisateur;
     }
 
     public Urgence(String utilisateur, Double latitude, Double longitude, String addresse, String place_id, String description, String plus, String date, String etat) {
