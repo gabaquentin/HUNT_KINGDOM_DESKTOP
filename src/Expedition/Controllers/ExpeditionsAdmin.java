@@ -10,9 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -73,11 +71,12 @@ public class ExpeditionsAdmin implements Initializable {
     @FXML
     private HBox dashboard;
 
+    @FXML
+    private AnchorPane body;
+
     @Override
     public void initialize(URL location, ResourceBundle resources){
 
-        minimize.setVisible(false);
-        handleDragged();
         sp_menu.setVisible(false);
         expedition.setDisable(true);
         dashboard.setDisable(false);
@@ -115,100 +114,23 @@ public class ExpeditionsAdmin implements Initializable {
         } ));
     }
 
-    @FXML
-    private void handleClose(MouseEvent event){
-        Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        s.close();
+
+    public void expedition(MouseEvent event) throws IOException {
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../Expedition/View/expeditionsAdmin.fxml"));
+
+        body.getChildren().setAll(newLoaded);
     }
 
-    @FXML
-    private void handleMin(MouseEvent event){
-        Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        s.setIconified(true);
+    public void urgence(MouseEvent event) throws IOException {
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../Urgence/View/urgencesAdmin.fxml"));
+
+        body.getChildren().setAll(newLoaded);
     }
 
-    @FXML
-    private void handleMax(MouseEvent event){
-        Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        s.setMaximized(true);
-        minimize.setVisible(true);
-        maximize.setVisible(false);
+    public void dashboard(MouseEvent event) throws IOException {
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../User/View/dashboardAdmin.fxml"));
+
+        body.getChildren().setAll(newLoaded);
     }
 
-    @FXML
-    private void handleMinimize(MouseEvent event){
-        Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        s.setMaximized(false);
-        minimize.setVisible(false);
-        maximize.setVisible(true);
-    }
-
-    private void handleDragged(){
-        top.setOnMousePressed((event -> {
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
-        }));
-        top.setOnMouseDragged((event -> {
-            Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            s.setX(event.getScreenX() - xOffset);
-            s.setY(event.getScreenY() - yOffset);
-            s.setOpacity(0.8f);
-        }));
-        top.setOnDragDone((event -> {
-            Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            s.setOpacity(1.0f);
-        }));
-        top.setOnMouseReleased((event -> {
-            Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            s.setOpacity(1.0f);
-        }));
-    }
-
-    public void expedition(MouseEvent event) {
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("../../Expedition/View/expeditionsAdmin.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(Loading.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.show();
-        parent.getScene().getWindow().hide();
-    }
-
-    public void urgence(MouseEvent event) {
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("../../Urgence/View/urgencesAdmin.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(Loading.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.show();
-        parent.getScene().getWindow().hide();
-    }
-
-    public void dashboard(MouseEvent event) {
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("../../User/View/AccueilAdmin.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(Loading.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.show();
-        parent.getScene().getWindow().hide();
-    }
 }
