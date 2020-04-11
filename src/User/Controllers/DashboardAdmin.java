@@ -1,33 +1,24 @@
-package Urgence.Controllers;
+package User.Controllers;
 
-import Urgence.Model.Urgence;
-import User.Controllers.Loading;
-import com.jfoenix.controls.JFXTreeTableColumn;
-import com.jfoenix.controls.JFXTreeTableView;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.TranslateTransition;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.TreeTableColumn;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.util.Callback;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class UrgencesAdmin implements Initializable {
+public class DashboardAdmin implements Initializable {
 
     private double xOffset = 0;
     private double yOffset = 0;
@@ -69,15 +60,6 @@ public class UrgencesAdmin implements Initializable {
     private FontAwesomeIcon sp_r;
 
     @FXML
-    private HBox urgence;
-
-    @FXML
-    private HBox expedition;
-
-    @FXML
-    private JFXTreeTableView<Urgence> urgence_table;
-
-    @FXML
     private HBox dashboard;
 
     @FXML
@@ -86,9 +68,8 @@ public class UrgencesAdmin implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources){
 
-         sp_menu.setVisible(false);
-        urgence.setDisable(true);
-        dashboard.setDisable(false);
+        sp_menu.setVisible(false);
+        dashboard.setDisable(true);
     }
 
     @FXML
@@ -124,21 +105,22 @@ public class UrgencesAdmin implements Initializable {
     }
 
     public void expedition(MouseEvent event) throws IOException {
-        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../Expedition/View/expeditionsAdmin.fxml"));
+
+          AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../Expedition/View/expeditionsAdmin.fxml"));
 
         body.getChildren().setAll(newLoaded);
+
     }
 
     public void urgence(MouseEvent event) throws IOException {
-        VBox newLoaded = FXMLLoader.load(getClass().getResource("../../Urgence/View/urgencesAdmin.fxml"));
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../Urgence/View/urgencesAdmin.fxml"));
 
         body.getChildren().setAll(newLoaded);
     }
 
     public void dashboard(MouseEvent event) throws IOException {
-        VBox newLoaded = FXMLLoader.load(getClass().getResource("../../User/View/dashboardAdmin.fxml"));
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../User/View/dashboardAdmin.fxml"));
 
         body.getChildren().setAll(newLoaded);
     }
-
 }
