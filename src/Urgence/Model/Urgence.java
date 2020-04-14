@@ -1,12 +1,17 @@
 package Urgence.Model;
 
 import Expedition.Model.Expedition;
+import Urgence.Services.UrgenceService;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Urgence extends RecursiveTreeObject<Urgence> {
 
     private int id;
     private int expedition;
+    private String exp;
     private String Utilisateur;
     private Double latitude;
     private Double longitude;
@@ -16,6 +21,23 @@ public class Urgence extends RecursiveTreeObject<Urgence> {
     private String plus;
     private String date;
     private String etat;
+    private JFXButton Action;
+
+    public JFXButton getAction() {
+        return Action;
+    }
+
+    public void setAction(JFXButton action) {
+        Action = action;
+    }
+
+    public String getExp() {
+        return exp;
+    }
+
+    public void setExp(String exp) {
+        this.exp = exp;
+    }
 
     public int getId() {
         return id;
@@ -124,9 +146,9 @@ public class Urgence extends RecursiveTreeObject<Urgence> {
         this.etat = etat;
     }
 
-    public Urgence(int id, int expedition, String utilisateur, Double latitude, Double longitude, String addresse, String place_id, String description, String plus, String date, String etat) {
+    public Urgence(int id, String exp, String utilisateur, Double latitude, Double longitude, String addresse, String place_id, String description, String plus, String date, String etat) {
         this.id = id;
-        this.expedition = expedition;
+        this.exp = exp;
         Utilisateur = utilisateur;
         this.latitude = latitude;
         this.longitude = longitude;

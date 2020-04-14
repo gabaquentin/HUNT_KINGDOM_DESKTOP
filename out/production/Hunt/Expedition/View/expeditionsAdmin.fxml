@@ -27,7 +27,7 @@
                         <Font name="Constantia" size="15.0" />
                      </font>
                   </Label>
-                  <FontAwesomeIcon glyphName="DASHBOARD" glyphStyle="-fx-fill: #4A565E" layoutX="11.0" layoutY="29.0" size="1.3em" />
+                  <FontAwesomeIcon glyphName="MEDKIT" glyphStyle="-fx-fill: #4A565E" layoutX="11.0" layoutY="29.0" size="1.3em" />
                   <FontAwesomeIcon glyphName="BELL" glyphStyle="-fx-fill: #4A565E" layoutX="639.0" layoutY="29.0" size="1.3em" />
                   <HBox alignment="CENTER_LEFT" layoutX="717.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="96.0" spacing="8.0" stylesheets="@../../css/style.css">
                      <children>
