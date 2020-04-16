@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXProgressBar?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -68,6 +73,12 @@
             </Pane>
             <Pane prefHeight="718.0" prefWidth="813.0" style="-fx-background-color: #fff;">
                <children>
+                  <Pane layoutX="405.0" layoutY="612.0" prefHeight="49.0" prefWidth="16.0" style="-fx-background-color: #4A565E;" />
+                  <JFXTreeTableView fx:id="expeditionList1" currentItemsCount="5" layoutX="-6.0" layoutY="114.0" prefHeight="421.0" prefWidth="819.0" styleClass="urgenceList" stylesheets="@../../css/tableStyle.css">
+                     <columnResizePolicy>
+                        <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </JFXTreeTableView>
                   <Pane fx:id="sp_menu" layoutX="-300.0" layoutY="278.0" prefHeight="129.0" prefWidth="300.0" style="-fx-background-color: #58C47A;">
                      <children>
                         <HBox fx:id="sp_close" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#closespmenu" prefHeight="40.0" prefWidth="300.0" spacing="8.0" styleClass="btns_close" stylesheets="@../../css/style.css">
@@ -129,6 +140,53 @@
                         </HBox>
                      </children>
                   </Pane>
+                  <JFXButton layoutX="316.0" layoutY="14.0" onMouseClicked="#showTable" prefHeight="49.0" prefWidth="181.0" text="VOIR PLUS" textFill="#7c7c7c">
+                     <font>
+                        <Font name="Constantia" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <FontAwesomeIcon fx:id="filterFieldSearch" glyphName="SEARCH" glyphStyle="-fx-fill: #4A565E" layoutX="221.0" layoutY="99.0" size="1.3em" />
+                  <JFXTextField fx:id="filterField" focusColor="#58c47a" layoutX="221.0" layoutY="81.0" onMouseClicked="#filterFieldAct" prefHeight="25.0" prefWidth="372.0" unFocusColor="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXTextField>
+                  <Pane fx:id="popupnotif" layoutX="-3.0" prefHeight="59.0" prefWidth="813.0" style="-fx-background-color: #BCE7CA;">
+                     <children>
+                        <Label fx:id="popupnotifMess" alignment="CENTER" layoutY="14.0" prefHeight="24.0" prefWidth="813.0" text="SUCCES" textFill="#7c7c7c">
+                           <font>
+                              <Font name="Constantia" size="15.0" />
+                           </font>
+                        </Label>
+                        <Pane fx:id="popupnotifSupTitle" layoutX="246.0" layoutY="52.0" prefHeight="39.0" prefWidth="322.0" style="-fx-background-color: #BCE7CA; -fx-border-radius: 12; -fx-background-radius: 12;">
+                           <children>
+                              <Label fx:id="popupnotifTitle" alignment="CENTER" layoutX="1.0" layoutY="8.0" prefHeight="24.0" prefWidth="322.0" text="C'est ok" textFill="#7c7c7c">
+                                 <font>
+                                    <Font name="Constantia" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="progressPane" layoutX="185.0" layoutY="549.0" prefHeight="39.0" prefWidth="453.0" style="-fx-background-color: #BCE7CA; -fx-border-radius: 12; -fx-background-radius: 12;">
+                     <children>
+                        <JFXProgressBar fx:id="progress" layoutX="26.0" layoutY="16.0" prefHeight="7.0" prefWidth="402.0" progress="0.0" />
+                        <Label fx:id="progressPercent" alignment="CENTER" contentDisplay="CENTER" layoutX="149.0" layoutY="40.0" prefHeight="39.0" prefWidth="158.0" style="-fx-background-color: #4A565E;" textFill="WHITE">
+                           <font>
+                              <Font name="FontAwesome Regular" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Label fx:id="progressPercent1" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="661.0" onMouseClicked="#showZar" prefHeight="39.0" prefWidth="415.0" style="-fx-background-color: #4A565E;" text="Afficher la carte des zones a risques" textFill="WHITE">
+                     <font>
+                        <Font name="FontAwesome Regular" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
                </children>
             </Pane>
          </children>

@@ -142,4 +142,7 @@ public class Accueil implements Initializable {
             s.setOpacity(1.0f);
         }));
     }
+
+    public void emergency(MouseEvent event) {
+    }
 }

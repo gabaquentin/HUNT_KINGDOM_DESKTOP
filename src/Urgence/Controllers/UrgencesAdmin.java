@@ -5,20 +5,23 @@ import Urgence.Model.Urgence;
 import Urgence.Services.UrgenceService;
 
 import User.Controllers.Loading;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTreeTableColumn;
-import com.jfoenix.controls.JFXTreeTableView;
-import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dataSource.DataSource;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -35,6 +38,7 @@ import javafx.util.Callback;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,6 +47,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -126,8 +131,13 @@ public class UrgencesAdmin implements Initializable {
     @FXML
     private FontAwesomeIcon iconPosition;
 
-    private final static int dataSize = 10_023;
-    private final static int rowsPerPage = 1000;
+    @FXML
+    private JFXTextField filterField;
+
+    @FXML
+    private FontAwesomeIcon filterFieldSearch;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -152,7 +162,7 @@ public class UrgencesAdmin implements Initializable {
         RotateTransition rotate = new RotateTransition();
         rotate.setAxis(Rotate.Z_AXIS);
         rotate.setByAngle(360);
-        rotate.setCycleCount(500);
+        rotate.setCycleCount(-1);
         rotate.setDuration(Duration.millis(1000));
         rotate.setAutoReverse(true);
         rotate.setNode(iconTraiter);
@@ -161,7 +171,7 @@ public class UrgencesAdmin implements Initializable {
         RotateTransition rotate1 = new RotateTransition();
         rotate1.setAxis(Rotate.Z_AXIS);
         rotate1.setByAngle(360);
-        rotate1.setCycleCount(500);
+        rotate1.setCycleCount(-1);
         rotate1.setDuration(Duration.millis(1000));
         rotate1.setAutoReverse(true);
         rotate1.setNode(iconItineraire);
@@ -169,10 +179,28 @@ public class UrgencesAdmin implements Initializable {
 
         TranslateTransition tt = new TranslateTransition(Duration.millis(500), iconPosition);
         tt.setByY(10);
-        tt.setCycleCount(500);
+        tt.setCycleCount(-1);
         tt.setAutoReverse(true);
 
         tt.play();
+
+    }
+
+    @FXML
+    private void showTable(MouseEvent event){
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Urgence/View/urgenceAdminTable.fxml"));
+                Parent parent = loader.load();
+
+                Stage stage = new Stage();
+                stage.setTitle("Urgence Table");
+                stage.initStyle(StageStyle.DECORATED);
+                stage.setScene(new Scene(parent));
+                stage.show();
+
+            } catch (IOException ex) {
+                Logger.getLogger(Loading.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
     }
 
@@ -377,6 +405,20 @@ public class UrgencesAdmin implements Initializable {
         urgenceList1.setRoot(root);
         urgenceList1.setShowRoot(false);
         urgenceList1.setEditable(true);
+
+        filterField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                urgenceList1.setPredicate(new Predicate<TreeItem<Urgencer>>() {
+                    @Override
+                    public boolean test(TreeItem<Urgencer> urgencerTreeItem) {
+                        Boolean flag = urgencerTreeItem.getValue().id.getValue().toLowerCase().contains(newValue) || urgencerTreeItem.getValue().Utilisateur.getValue().toLowerCase().contains(newValue) || urgencerTreeItem.getValue().etat.getValue().toLowerCase().contains(newValue) || urgencerTreeItem.getValue().date.getValue().toLowerCase().contains(newValue) || urgencerTreeItem.getValue().addresse.getValue().toLowerCase().contains(newValue);
+                        return flag;
+                    }
+                });
+            }
+        });
+
     }
 
     static class  Urgencer extends RecursiveTreeObject<Urgencer> {
@@ -455,6 +497,19 @@ public class UrgencesAdmin implements Initializable {
             System.out.println(e.getMessage());
         }
         return list;
+    }
+
+    @FXML
+    private void filterFieldAct(MouseEvent event){
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.5));
+        slide.setNode(filterFieldSearch);
+
+        slide.setToX(-20);
+        slide.play();
+
+        slide.setOnFinished((e ->{
+        } ));
     }
 
     @FXML
