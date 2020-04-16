@@ -7,9 +7,9 @@
 
 <AnchorPane prefHeight="580.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Produits.Controllers.ajoutProduitController">
    <children>
-      <VBox prefHeight="580.0" prefWidth="430.0" style="-fx-background-color: #2c3e50; -fx-border-color: #c2e0ff; -fx-border-width: 3;">
+      <VBox prefHeight="580.0" prefWidth="430.0" style="-fx-background-color: #ababab; -fx-border-color: #c2e0ff; -fx-border-width: 3;">
          <children>
-            <HBox prefHeight="60.0" prefWidth="430.0" style="-fx-background-color: #F89406;">
+            <HBox prefHeight="60.0" prefWidth="430.0" style="-fx-background-color: #58c75d;">
                <children>
                   <Label prefHeight="48.0" prefWidth="176.0" text="Ajout Produit " textFill="WHITE">
                      <font>
@@ -28,7 +28,7 @@
                   <Insets left="20.0" top="50.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="nom" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #6c7a89; -fx-border-color: #ffffff;">
+            <TextField fx:id="nom" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #d4ffda; -fx-border-color: #6c7a89;">
                <VBox.margin>
                   <Insets left="150.0" right="70.0" top="-27.0" />
                </VBox.margin>
@@ -81,22 +81,22 @@
                   <Insets left="20.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="qte" layoutX="163.0" layoutY="127.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #6c7a89; -fx-border-color: #ffffff;">
+            <TextField fx:id="qte" layoutX="163.0" layoutY="127.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #d4ffda; -fx-border-color: #6c7a89;">
                <VBox.margin>
                   <Insets left="150.0" right="70.0" top="-233.0" />
                </VBox.margin>
             </TextField>
-            <ComboBox fx:id="ctg" prefHeight="27.0" prefWidth="205.0" promptText="Choisir Catégorie" style="-fx-background-color: #6c7a89; -fx-border-color: #ffffff;">
+            <ComboBox fx:id="ctg" prefHeight="27.0" prefWidth="205.0" promptText="Choisir Catégorie" style="-fx-background-color: #d4ffda; -fx-border-color: #6c7a89;">
                <VBox.margin>
                   <Insets left="150.0" top="13.0" />
                </VBox.margin>
             </ComboBox>
-            <TextField fx:id="prx" layoutX="163.0" layoutY="167.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #6c7a89; -fx-border-color: #ffffff;">
+            <TextField fx:id="prx" layoutX="163.0" layoutY="167.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #d4ffda; -fx-border-color: #6c7a89;">
                <VBox.margin>
                   <Insets left="150.0" right="70.0" top="13.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="img" layoutX="163.0" layoutY="247.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #6c7a89; -fx-border-color: #ffffff;">
+            <TextField fx:id="img" editable="false" layoutX="163.0" layoutY="247.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #d4ffda; -fx-border-color: #6c7a89;">
                <VBox.margin>
                   <Insets left="150.0" right="70.0" top="13.0" />
                </VBox.margin>
@@ -106,12 +106,12 @@
                   <Insets left="360.0" top="-27.0" />
                </VBox.margin>
             </Button>
-            <ComboBox fx:id="frns" layoutX="163.0" layoutY="207.0" prefHeight="27.0" prefWidth="205.0" promptText="Choisir Founisseur" style="-fx-background-color: #6c7a89; -fx-border-color: #ffffff;">
+            <ComboBox fx:id="frns" layoutX="163.0" layoutY="207.0" prefHeight="27.0" prefWidth="205.0" promptText="Choisir Founisseur" style="-fx-background-color: #d4ffda; -fx-border-color: #6c7a89;">
                <VBox.margin>
                   <Insets left="150.0" right="70.0" top="15.0" />
                </VBox.margin>
             </ComboBox>
-            <TextField fx:id="desc" layoutX="163.0" layoutY="329.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #6c7a89; -fx-border-color: #ffffff;">
+            <TextField fx:id="desc" layoutX="163.0" layoutY="329.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #d4ffda; -fx-border-color: #6c7a89;">
                <VBox.margin>
                   <Insets bottom="30.0" left="150.0" right="40.0" top="15.0" />
                </VBox.margin>

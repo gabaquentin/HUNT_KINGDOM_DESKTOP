@@ -2,6 +2,8 @@ package Produits.Services;
 
 import Produits.Controllers.DataSource;
 import Produits.Model.Fournisseurs;
+import Produits.Model.Produits;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CrudFournisseur {
 
@@ -33,6 +37,26 @@ public class CrudFournisseur {
 
         return st;
     }
+
+    public void updatetab(Fournisseurs a) throws SQLException {
+        try {
+            Connection cnx= DataSource.getInstance().getCnx();
+            PreparedStatement PS=cnx.prepareStatement("UPDATE `fournisseur` SET `nomFournisseur`=? ,`emailFournisseur`=? WHERE `id`=?");
+            PS.setString(1,a.getNomFournisseur());
+            PS.setString(2, a.getEmailFournisseur());
+            PS.setInt(3,a.getId());
+            PS.executeUpdate();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Succès");
+            alert.setHeaderText("Succès");
+            alert.setContentText("Fournisseur Modifié Avec Succès!");
+            alert.showAndWait();
+        } catch (Exception e) {
+            Logger.getLogger(CrudProduit.class.getName()).log(Level.SEVERE,null,e);
+        }
+
+    }
+
 
     public static Fournisseurs chercherF(int id){
         Fournisseurs f=new Fournisseurs();
@@ -115,6 +139,27 @@ public class CrudFournisseur {
         }
         return list;
     }
+    public int find(String nom)
+    {
+        int id=0;
+        Connection cnx= DataSource.getInstance().getCnx();
+        String sql="SELECT * FROM fournisseur where nomFournisseur='"+nom+"'";
+        try {
+            PreparedStatement pst=cnx.prepareStatement(sql);
+            ResultSet res=pst.executeQuery();
+            if(res.next()){
+                id =res.getInt(1);
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return id;
+
+    }
+
+
 
 
 
