@@ -5,14 +5,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="530.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Produits.Controllers.ajoutFournisseurController">
-
-<children>
-        <VBox prefHeight="530.0" prefWidth="430.0" style="-fx-background-color: #ababab; -fx-border-color: #c2e0ff; -fx-border-width: 3;">
+<AnchorPane prefHeight="530.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Produits.Controllers.modifFournisseurController">
+    <children>
+        <VBox prefHeight="530.0" prefWidth="430.0" style="-fx-background-color: #2c3e50; -fx-border-color: #c2e0ff; -fx-border-width: 3;">
             <children>
-                <HBox prefHeight="60.0" prefWidth="430.0" style="-fx-background-color: #58c75d;">
+                <HBox prefHeight="60.0" prefWidth="430.0" style="-fx-background-color: #F89406;">
                     <children>
-                        <Label prefHeight="48.0" prefWidth="247.0" text="Ajout Fournisseur" textFill="WHITE">
+                        <Label prefHeight="48.0" prefWidth="176.0" text="Ajout Produit " textFill="WHITE">
                             <font>
                                 <Font name="Tahoma Bold" size="24.0" />
                             </font>
@@ -21,12 +20,21 @@
                             </HBox.margin>
                         </Label>
                     </children></HBox>
+            <TextField fx:id="idFrns">
+               <VBox.margin>
+                  <Insets left="240.0" right="150.0" top="30.0" />
+               </VBox.margin>
+            </TextField>
+            <Button fx:id="chercherFBtn" mnemonicParsing="false" onAction="#chercherFournisseur" text="Chercher">
+               <VBox.margin>
+                  <Insets left="290.0" top="-25.0" />
+               </VBox.margin></Button>
                 <Label alignment="CENTER" prefHeight="31.0" prefWidth="109.0" text="Nom:" textFill="WHITE">
                     <font>
                         <Font name="Tahoma" size="18.0" />
                     </font>
                     <VBox.margin>
-                        <Insets left="20.0" top="50.0" />
+                        <Insets left="20.0" top="25.0" />
                     </VBox.margin>
                 </Label>
                 <Label alignment="CENTER" layoutX="33.0" layoutY="123.0" prefHeight="31.0" prefWidth="109.0" text="ID:" textFill="WHITE">
@@ -45,25 +53,25 @@
                         <Insets left="20.0" top="50.0" />
                     </VBox.margin>
                 </Label>
-                <TextField fx:id="nomF" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #d4ffda; -fx-border-color: #ffffff;">
+                <TextField fx:id="nomF" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #6c7a89; -fx-border-color: #ffffff;">
                     <VBox.margin>
-                        <Insets left="150.0" right="70.0" top="-185.0" />
+                        <Insets left="150.0" right="70.0" top="-188.0" />
                     </VBox.margin>
                 </TextField>
 
-                <TextField fx:id="idF" layoutX="163.0" layoutY="127.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #d4ffda; -fx-border-color: #ffffff;">
-                    <VBox.margin>
-                        <Insets left="150.0" right="70.0" top="50.0" />
-                    </VBox.margin>
-                </TextField>
-                <TextField fx:id="emailF" layoutX="163.0" layoutY="167.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #d4ffda; -fx-border-color: #ffffff;">
+                <TextField fx:id="idF" layoutX="163.0" layoutY="127.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #6c7a89; -fx-border-color: #ffffff;">
                     <VBox.margin>
                         <Insets left="150.0" right="70.0" top="50.0" />
                     </VBox.margin>
                 </TextField>
+                <TextField fx:id="emailF" layoutX="163.0" layoutY="167.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #6c7a89; -fx-border-color: #ffffff;">
+                    <VBox.margin>
+                        <Insets left="150.0" right="70.0" top="50.0" />
+                    </VBox.margin>
+                </TextField>
 
 
-                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#vider" prefHeight="43.0" prefWidth="90.0" style="-fx-background-color: #f22613;" text="Annuler" textFill="WHITE">
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#supprFournisseur" prefHeight="43.0" prefWidth="100.0" style="-fx-background-color: #f22613;" text="Supprimer" textFill="WHITE">
                     <font>
                         <Font name="Tahoma Bold" size="14.0" />
                     </font>
@@ -71,7 +79,7 @@
                         <Insets left="150.0" top="90.0" />
                     </VBox.margin>
                 </Button>
-                <Button alignment="CENTER" contentDisplay="CENTER" layoutX="108.0" layoutY="490.0" mnemonicParsing="false" onAction="#ajoutFournisseur" prefHeight="43.0" prefWidth="90.0" style="-fx-background-color: #22a7f0;" text="Ajouter" textFill="WHITE">
+                <Button alignment="CENTER" contentDisplay="CENTER" layoutX="108.0" layoutY="490.0" mnemonicParsing="false" onAction="#modifFournisseur" prefHeight="43.0" prefWidth="90.0" style="-fx-background-color: #22a7f0;" text="Modifier" textFill="WHITE">
                     <font>
                         <Font name="Tahoma Bold" size="14.0" />
                     </font>

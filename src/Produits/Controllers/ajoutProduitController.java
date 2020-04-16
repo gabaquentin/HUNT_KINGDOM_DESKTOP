@@ -29,6 +29,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import javafx.scene.control.TextField;
 
 
 
@@ -40,7 +41,7 @@ public class ajoutProduitController implements Initializable {
     @FXML private TextField qte;
     @FXML private ComboBox<String> ctg;
     @FXML private TextField prx;
-    @FXML private ComboBox<Integer> frns;
+        @FXML private ComboBox<String> frns;
     @FXML private TextField desc;
     @FXML private TextField img;
     @FXML private Button JoindreBtn;
@@ -58,7 +59,7 @@ public class ajoutProduitController implements Initializable {
         int size= fr.afficher().size();
 
         for (int i=0; i<size ;i++){
-            frns.getItems().addAll(fr.afficher().get(i).getId());
+            frns.getItems().addAll(fr.afficher().get(i).getNomFournisseur());
             //jointure
         }
 
@@ -96,11 +97,13 @@ public class ajoutProduitController implements Initializable {
 
 
     public void ajoutProduit(javafx.event.ActionEvent actionEvent) {
+        CrudFournisseur fr =new CrudFournisseur();
+
         String nomProduit= nom.getText();
         int quantite= Integer.parseInt(qte.getText());
         String categorie= ctg.getValue();
         int prix= Integer.parseInt(prx.getText());
-        int fournisseur=frns.getValue();
+        String fournisseur=frns.getValue();
         String description=desc.getText();
         String image=img.getText();
 
@@ -110,7 +113,7 @@ public class ajoutProduitController implements Initializable {
         p.setCategorie(categorie);
         p.setPrix(prix);
         p.setImage(image);
-        p.setFournisseur(fournisseur);
+        p.setFournisseur(fr.find(fournisseur));
         p.setDescription(description);
 
         int status = CrudProduit.ajoutP(p);

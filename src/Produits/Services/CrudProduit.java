@@ -2,11 +2,14 @@ package Produits.Services;
 
 import Produits.Controllers.DataSource;
 import Produits.Model.Produits;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CrudProduit {
 
@@ -62,6 +65,25 @@ public class CrudProduit {
 
 
         return st;
+    }
+
+    public void updatetab(Produits a) throws SQLException {
+        try {
+            Connection cnx= DataSource.getInstance().getCnx();
+            PreparedStatement PS=cnx.prepareStatement("UPDATE `produits` SET `nomProduit`=? ,`description`=? WHERE `id`=?");
+            PS.setString(1,a.getNomProduit());
+            PS.setString(2, a.getDescription());
+            PS.setInt(3,a.getId());
+            PS.executeUpdate();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Succès");
+            alert.setHeaderText("Succès");
+            alert.setContentText("Produit Modifié Avec Succès!");
+            alert.showAndWait();
+        } catch (Exception e) {
+            Logger.getLogger(CrudProduit.class.getName()).log(Level.SEVERE,null,e);
+        }
+
     }
 
     public static int supprP(int id){

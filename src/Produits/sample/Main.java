@@ -11,6 +11,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
@@ -33,9 +34,9 @@ public class Main extends Application {
         DataSource ds=DataSource.getInstance();
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("../../View/AfficheP.fxml"));
-        primaryStage.setTitle("Ajout Produit");
-        primaryStage.setScene(new Scene(root, 900, 600));
+        Parent root = FXMLLoader.load(getClass().getResource("../Produits/View/AfficheP.fxml"));
+        primaryStage.setScene(new Scene(root));
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
         //String Libelle= nomProduit.getText();
         /*
