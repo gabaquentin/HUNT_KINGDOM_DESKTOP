@@ -44,6 +44,24 @@ public class ExpeditionService implements IService<Expedition> {
     }
 
     @Override
+    public String findName(int id) {
+        String nom = "";
+        String req = "SELECT * FROM expedition WHERE id = '"+id+"'";
+        try {
+            PreparedStatement pst = cnx.prepareStatement(req);
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()){
+                nom = rs.getString(2);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return nom;
+    }
+
+    @Override
     public void modifier(Expedition E) {
 
     }

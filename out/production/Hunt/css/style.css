@@ -36,8 +36,6 @@
     -fx-text-fill: #fff;
 }
 
-
-
 .btns{
     -fx-background-color: transparent;
 }
@@ -51,3 +49,7 @@
 .btns_close:hover{
     -fx-background-color: #D56062;
 }
+
+
+
+

@@ -4,17 +4,22 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.testapps.AwesomeIconNameComparator;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AccueilAdmin implements Initializable {
 
@@ -57,22 +62,19 @@ public class AccueilAdmin implements Initializable {
     @FXML
     private FontAwesomeIcon sp_r;
 
+    @FXML
+    private HBox dashboard;
+
+    @FXML
+    private AnchorPane body;
+
     @Override
     public void initialize(URL location, ResourceBundle resources){
 
         minimize.setVisible(false);
         handleDragged();
         sp_menu.setVisible(false);
-        TranslateTransition slide = new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.1));
-        slide.setNode(sp_menu);
-
-        slide.setToX(-300);
-        slide.play();
-
-        slide.setOnFinished((e ->{
-
-        } ));
+        dashboard.setDisable(true);
     }
 
     @FXML
@@ -82,7 +84,7 @@ public class AccueilAdmin implements Initializable {
         slide.setDuration(Duration.seconds(0.5));
         slide.setNode(sp_menu);
 
-        slide.setToX(0);
+        slide.setToX(+300);
         slide.play();
 
         slide.setOnFinished((e ->{
@@ -97,7 +99,7 @@ public class AccueilAdmin implements Initializable {
         slide.setDuration(Duration.seconds(0.5));
         slide.setNode(sp_menu);
 
-        slide.setToX(-300);
+        slide.setToX(0);
         slide.play();
 
         slide.setOnFinished((e ->{
@@ -156,9 +158,23 @@ public class AccueilAdmin implements Initializable {
         }));
     }
 
-    public void expedition(MouseEvent event) {
+    public void expedition(MouseEvent event) throws IOException {
+
+          AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../Expedition/View/expeditionsAdmin.fxml"));
+
+        body.getChildren().setAll(newLoaded);
+
     }
 
-    public void urgence(MouseEvent event) {
+    public void urgence(MouseEvent event) throws IOException {
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../Urgence/View/urgencesAdmin.fxml"));
+
+        body.getChildren().setAll(newLoaded);
+    }
+
+    public void dashboard(MouseEvent event) throws IOException {
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../User/View/dashboardAdmin.fxml"));
+
+        body.getChildren().setAll(newLoaded);
     }
 }

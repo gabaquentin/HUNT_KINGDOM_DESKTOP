@@ -20,15 +20,32 @@ public class Accueil implements Initializable {
     private double xOffset = 0;
     private double yOffset = 0;
 
-    @FXML private StackPane parent;
-    @FXML private HBox top;
-    @FXML private Pane menu;
-    @FXML private Pane btn_menu;
-    @FXML private FontAwesomeIcon btn_menubars;
-    @FXML private Pane btn_menu_exit;
-    @FXML private FontAwesomeIcon btn_menu_exitbars;
-    @FXML private Pane maximize;
-    @FXML private Pane minimize;
+    @FXML
+    private StackPane parent;
+
+    @FXML
+    private HBox top;
+
+    @FXML
+    private Pane menu;
+
+    @FXML
+    private Pane btn_menu;
+
+    @FXML
+    private FontAwesomeIcon btn_menubars;
+
+    @FXML
+    private Pane btn_menu_exit;
+
+    @FXML
+    private FontAwesomeIcon btn_menu_exitbars;
+
+    @FXML
+    private Pane maximize;
+
+    @FXML
+    private Pane minimize;
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -124,5 +141,8 @@ public class Accueil implements Initializable {
             Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
             s.setOpacity(1.0f);
         }));
+    }
+
+    public void emergency(MouseEvent event) {
     }
 }

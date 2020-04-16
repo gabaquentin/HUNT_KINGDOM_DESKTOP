@@ -12,7 +12,7 @@ public class User extends Application {
     private double x,y ;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../User/View/accueilAdmin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../User/View/loading.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();

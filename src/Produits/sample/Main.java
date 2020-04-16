@@ -34,7 +34,7 @@ public class Main extends Application {
         DataSource ds=DataSource.getInstance();
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("../View/AfficheP.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Produits/View/AfficheP.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
