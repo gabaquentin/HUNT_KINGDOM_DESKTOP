@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<StackPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.Controllers.Loading">
+<StackPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.Controllers.Loading">
    <children>
-      <Pane prefHeight="483.0" prefWidth="709.0" style="-fx-background-color: #6CA65A;" />
-      <Label text="LOADING ...">
-         <font>
-            <Font size="53.0" />
-         </font>
-      </Label>
+      <Pane prefHeight="483.0" prefWidth="709.0" style="-fx-background-color: #6CA65A;">
+         <children>
+            <Label layoutX="59.0" layoutY="206.0" text="WELCOME TO HUNTKINGDOM" textFill="#4a4a4a">
+               <font>
+                  <Font name="Constantia" size="40.0" />
+               </font>
+            </Label>
+            <ImageView layoutX="316.0" layoutY="113.0">
+               <image>
+                  <Image url="@../../img/LOGOHUNT3.png" />
+               </image>
+            </ImageView>
+            <JFXProgressBar layoutX="63.0" layoutY="297.0" prefHeight="5.0" prefWidth="593.0" />
+            <Pane layoutY="91.0" prefHeight="91.0" prefWidth="59.0" style="-fx-background-color: #4A565E;" />
+            <Pane prefHeight="91.0" prefWidth="103.0" style="-fx-background-color: #4A565E;" />
+            <Pane layoutY="385.0" prefHeight="91.0" prefWidth="103.0" style="-fx-background-color: #4A565E;" />
+            <Pane layoutY="296.0" prefHeight="91.0" prefWidth="67.0" style="-fx-background-color: #4A565E;" />
+            <Pane layoutX="652.0" layoutY="91.0" prefHeight="91.0" prefWidth="59.0" style="-fx-background-color: #4A565E;" />
+            <Pane layoutX="608.0" prefHeight="91.0" prefWidth="103.0" style="-fx-background-color: #4A565E;" />
+            <Pane layoutX="608.0" layoutY="388.0" prefHeight="91.0" prefWidth="103.0" style="-fx-background-color: #4A565E;" />
+            <Pane layoutX="644.0" layoutY="297.0" prefHeight="91.0" prefWidth="67.0" style="-fx-background-color: #4A565E;" />
+            <Pane layoutX="-5.0" layoutY="468.0" prefHeight="16.0" prefWidth="716.0" style="-fx-background-color: #4A565E;" />
+         </children></Pane>
    </children>
 </StackPane>
