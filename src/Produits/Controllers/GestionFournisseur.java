@@ -4,6 +4,7 @@ import Produits.Model.Fournisseurs;
 import Produits.Model.Produits;
 import Produits.Services.CrudFournisseur;
 import Produits.Services.CrudProduit;
+import User.Controllers.Loading;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
@@ -23,6 +24,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import javax.mail.*;
@@ -39,6 +41,8 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.Properties;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GestionFournisseur implements Initializable {
     Connection cnx=DataSource.getInstance().getCnx();
@@ -110,17 +114,18 @@ public class GestionFournisseur implements Initializable {
     }
     public void fenetreAjoutF(javafx.event.ActionEvent actionEvent) {
         try {
-            Stage stage= new Stage() ;
-            Parent root = FXMLLoader.load(getClass().getResource("../View/AjoutFournisseur.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/AjoutFournisseur.fxml"));
+            Parent parent = loader.load();
 
+            Stage stage = new Stage();
             stage.setTitle("Ajout Fournisseur");
-            stage.setScene(new Scene(root, 430, 580));
+            stage.setScene(new Scene(parent, 430, 580));
             stage.show();
 
-            AjoutFBtn.getScene().setRoot(root);
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            Logger.getLogger(Loading.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
         public void fenetreModifF(javafx.event.ActionEvent actionEvent) {
@@ -325,17 +330,18 @@ public class GestionFournisseur implements Initializable {
 
 
     public void Mailing(ActionEvent event) {
-        try {
-            Stage stage= new Stage() ;
-            Parent root = FXMLLoader.load(getClass().getResource("../View/MailFournisseur.fxml"));
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/MailFournisseur.fxml"));
+            Parent parent = loader.load();
+
+            Stage stage = new Stage();
             stage.setTitle("Mailing");
-            stage.setScene(new Scene(root, 430, 580));
+            stage.setScene(new Scene(parent, 430, 580));
             stage.show();
 
-            MailBtn.getScene().setRoot(root);
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            Logger.getLogger(Loading.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -2,6 +2,7 @@ package Produits.Controllers;
 
 import Produits.Model.Produits;
 import Produits.Services.CrudProduit;
+import User.Controllers.Loading;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
@@ -31,6 +32,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GestionProduit implements Initializable {
     Connection cnx=DataSource.getInstance().getCnx();
@@ -118,16 +121,16 @@ public class GestionProduit implements Initializable {
 
     public void fenetreAjout(javafx.event.ActionEvent actionEvent) {
         try {
-            Stage stage= new Stage() ;
-            Parent root = FXMLLoader.load(getClass().getResource("../View/AjoutP.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/AjoutP.fxml"));
+            Parent parent = loader.load();
 
+            Stage stage = new Stage();
             stage.setTitle("Ajout Produit");
-            stage.setScene(new Scene(root, 430, 580));
+            stage.setScene(new Scene(parent, 430, 580));
             stage.show();
 
-            AjoutBtn.getScene().setRoot(root);
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            Logger.getLogger(Loading.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -144,18 +147,20 @@ public class GestionProduit implements Initializable {
 
     @FXML
     public void statistique(ActionEvent actionEvent) {
-        try {
-            Stage stage= new Stage() ;
-            Parent root = FXMLLoader.load(getClass().getResource("../View/Stat.fxml"));
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/Stat.fxml"));
+            Parent parent = loader.load();
+
+            Stage stage = new Stage();
             stage.setTitle("Statistiques Produit");
-            stage.setScene(new Scene(root, 600, 482));
+            stage.setScene(new Scene(parent, 600, 482));
             stage.show();
 
-            StatBtn.getScene().setRoot(root);
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            Logger.getLogger(Loading.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
     @FXML
     private void supprimer(ActionEvent event) {
