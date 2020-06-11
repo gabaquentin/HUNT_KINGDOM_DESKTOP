@@ -36,7 +36,7 @@ public class Loading  implements Initializable {
                     public void run() {
                         Parent root = null;
                         try {
-                            root = FXMLLoader.load(getClass().getResource("../../User/View/accueilAdmin.fxml"));
+                            root = FXMLLoader.load(getClass().getResource("../../User/View/authentification.fxml"));
                         } catch (IOException ex) {
                             Logger.getLogger(Loading.class.getName()).log(Level.SEVERE, null, ex);
                         }

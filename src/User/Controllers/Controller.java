@@ -2,10 +2,17 @@ package User.Controllers;
 import java.util.ResourceBundle;
 import java.net.URL;
 
+import Expedition.Services.ExpeditionService;
+import Urgence.Model.Urgence;
+import Urgence.Services.UrgenceService;
+import User.Model.User;
+import User.Services.UserService;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -24,6 +31,7 @@ public class Controller implements Initializable {
 
     private double xOffset = 0;
     private double yOffset = 0;
+
 
     @FXML
     private StackPane parent;
@@ -126,7 +134,7 @@ public class Controller implements Initializable {
     private JFXTextField la2_textf_pass22;
 
     @FXML
-    private JFXComboBox la2_textf_dom2;
+    private JFXComboBox<String> la2_textf_dom2;
 
     @FXML
     private JFXTextField la2_textf_auth2;
@@ -176,6 +184,10 @@ public class Controller implements Initializable {
         la2_textf_pass22.setVisible(false);
 
         la2_textf_dom2.setVisible(false);
+
+        final ObservableList<String> roles = FXCollections.observableArrayList("chasse", "peche");
+
+        la2_textf_dom2.setItems(roles);
 
         la2_textf_auth2.setVisible(false);
 
@@ -361,7 +373,38 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void btn_signup_la2(MouseEvent event){
+    private void btn_signup_la2(MouseEvent event) throws Exception {
+
+        if(la2_textf_nom2.getText().equals("") && la2_textf_prenom2.getText().equals("") && la2_textf_email2.getText().equals("") && la2_textf_tel2.getText().equals("") && la2_textf_addr2.getText().equals("") && la2_textf_auth2.getText().equals("") && la2_textf_user2.getText().equals("") && la2_textf_pass2.getText().equals("") && la2_textf_pass22.getText().equals(""))
+        {
+            la1_text2.setText("Veuillez remplir tous les champs du formulaire");
+
+        }
+        else{
+
+            if(la2_textf_pass2.getText().equals(la2_textf_pass22.getText()))
+            {
+
+                /*
+                UserService Us = new UserService();
+
+                User U = new User(la2_textf_nom2.getText(),la2_textf_prenom2.getText(),la2_textf_email2.getText(),la2_textf_tel2.getText(),la2_textf_addr2.getText(),la2_textf_auth2.getText(),la2_textf_user2.getText(),la2_textf_pass2.getText(),la2_textf_dom2.getValue(),"0");
+
+                Us.connexion(U);
+                 */
+                
+
+                layer1.setDisable(true);
+                la1_text2.setText("Consultez l'email envoyé a l'addresse "+la2_textf_email2.getText() +" .  Cet email contient le lien d'activation de votre compte ensuite vous pouriez vous connecter.");
+            }
+            else{
+
+                la1_text2.setText("Les mots de passe ne sont pas identiques");
+
+            }
+
+        }
+
 
     }
 

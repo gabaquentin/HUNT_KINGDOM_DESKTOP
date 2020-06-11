@@ -1,21 +1,41 @@
 package User.Model;
 
+import com.sun.istack.internal.NotNull;
+
 import java.util.ArrayList;
 
 public class User {
+    @NotNull
     private int id;
     private String username;
     private String email;
-    private ArrayList<String> roles;
+    private String roles;
     private String nom;
     private String prenom;
     private String telephone;
     private String num_auth;
     private String penalite;
     private String adresse;
+    private String password;
 
     public int getId() {
         return id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setId(int id) {
@@ -36,14 +56,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public ArrayList<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(ArrayList<String> roles) {
-        this.roles = roles;
     }
 
     public String getNom() {
@@ -94,5 +106,22 @@ public class User {
         this.adresse = adresse;
     }
 
+    public User(String utilisateur, String password) {
+        this.username = utilisateur;
+        this.password = password;
+    }
+
+    public User(String nom, String prenom, String email, String telephone, String addresse, String num_auth, String utilisateur, String password, String roles, String penalite) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.telephone = telephone;
+        this.adresse = addresse;
+        this.num_auth = num_auth;
+        this.username = utilisateur;
+        this.password = password;
+        this.roles = roles;
+        this.penalite = penalite;
+    }
 
 }

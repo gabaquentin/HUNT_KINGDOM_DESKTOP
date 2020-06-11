@@ -17,9 +17,9 @@ public class UrgenceAdminItineraire {
 
     public void drawRoute(String ADDR, String USER, String DATE, String ETAT){
         WebEngine engine = itineraireUrgence.getEngine();
-        engine.load("http://127.0.0.1:8000/adminEmergency/position/"+ADDR);
-        //URL url = this.getClass().getResource("../View/itineraire.html");
-        //engine.load(url.toString());
+        //engine.load("http://127.0.0.1:8000/adminEmergency/position/"+ADDR);
+        URL url = this.getClass().getResource("../View/itineraire.html");
+        engine.load(url.toString());
 
         title1.setText("Urgence de L'utilisateur "+USER);
         title2.setText("Survenue le "+DATE);

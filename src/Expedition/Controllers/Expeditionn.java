@@ -208,7 +208,7 @@ public class Expeditionn implements Initializable {
                     String fin = Dfin+"T"+Tfin;
                     ExpeditionService Es = new ExpeditionService();
                     UserService Us = new UserService();
-                    Expedition E = new Expedition(nom.getText(), "0", debut, fin, dateFormat.format(cal.getTime()), description.getText(), destination.getText(), "chasse", Us.find("venomia"));
+                    Expedition E = new Expedition(nom.getText(), "0", debut, fin, dateFormat.format(cal.getTime()), description.getText(), destination.getText(), "chasse", 2);
 
                     Es.ajouter(E);
 

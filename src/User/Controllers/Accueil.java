@@ -3,17 +3,24 @@ package User.Controllers;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Accueil implements Initializable {
 
@@ -144,5 +151,18 @@ public class Accueil implements Initializable {
     }
 
     public void emergency(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Urgence/View/urgences.fxml"));
+            Parent parent = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Urgence");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(parent));
+            stage.show();
+
+        } catch (IOException ex) {
+            Logger.getLogger(Loading.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

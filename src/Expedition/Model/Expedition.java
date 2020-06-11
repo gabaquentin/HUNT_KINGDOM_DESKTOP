@@ -13,7 +13,7 @@ public class Expedition {
     private String type;
     private int utilisateur;
 
-    public Expedition(int id, String nom, String statut, String dateDebut, String dateFin, String date, String message, String lieux, String type, int utilisateur) {
+    public Expedition(int id, String nom, String statut, String dateDebut, String dateFin, String date, String message, String lieux, String type) {
         this.id = id;
         this.nom = nom;
         this.statut = statut;
@@ -23,7 +23,7 @@ public class Expedition {
         this.message = message;
         this.lieux = lieux;
         this.type = type;
-        this.utilisateur = utilisateur;
+      //  this.utilisateur = utilisateur;
     }
 
     public Expedition(String nom, String statut, String dateDebut, String dateFin, String date, String message, String lieux, String type, int utilisateur) {
@@ -35,6 +35,7 @@ public class Expedition {
         this.message = message;
         this.lieux = lieux;
         this.type = type;
+        this.utilisateur = utilisateur;
     }
 
     @Override
