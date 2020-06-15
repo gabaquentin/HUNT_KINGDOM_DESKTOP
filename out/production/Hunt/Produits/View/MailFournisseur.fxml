@@ -45,7 +45,7 @@
                     </VBox.margin>
                 </Label>
 
-                <TextField fx:id="mail" layoutX="163.0" layoutY="127.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #d4ffda; -fx-border-color: #ffffff;">
+                <TextField fx:id="mail" editable="false" layoutX="163.0" layoutY="127.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #d4ffda; -fx-border-color: #ffffff;" text="Tarekbenyahia89@gmail.com">
                     <VBox.margin>
                         <Insets left="150.0" right="70.0" top="-150.0" />
                     </VBox.margin>
