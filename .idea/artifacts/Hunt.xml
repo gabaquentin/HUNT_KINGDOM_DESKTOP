@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="Hunt">
+    <output-path>$PROJECT_DIR$/out/artifacts/Hunt</output-path>
+    <root id="root">
+      <element id="archive" name="Hunt.jar">
+        <element id="module-output" name="Hunt" />
+      </element>
+    </root>
+  </artifact>
+</component>
