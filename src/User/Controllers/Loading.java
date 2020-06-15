@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.prefs.Preferences;
 
 public class Loading  implements Initializable {
 
@@ -36,7 +37,17 @@ public class Loading  implements Initializable {
                     public void run() {
                         Parent root = null;
                         try {
-                            root = FXMLLoader.load(getClass().getResource("../../User/View/accueilAdmin.fxml"));
+                            Preferences userPreferences = Preferences.userRoot();
+                            String user = userPreferences.get("username","");
+                            if(user.equals(""))
+                            {
+                                root = FXMLLoader.load(getClass().getResource("../../User/View/authentification.fxml"));
+                            }
+                            else
+                            {
+                                root = FXMLLoader.load(getClass().getResource("../../User/View/accueil.fxml"));
+                            }
+
                         } catch (IOException ex) {
                             Logger.getLogger(Loading.class.getName()).log(Level.SEVERE, null, ex);
                         }

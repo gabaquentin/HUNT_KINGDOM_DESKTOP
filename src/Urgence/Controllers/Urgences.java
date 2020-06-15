@@ -130,13 +130,15 @@ public class Urgences implements Initializable {
         ExpeditionService Es = new ExpeditionService();
 
         int size = Es.afficher().size();
+        int count = 0;
 
         for(int i=0; i< size ; i++ ){
 
             exp.getItems().addAll(Es.afficher().get(i).getNom());
+            count+=1;
 
         }
-
+        System.out.println(count);
         exp.getSelectionModel().select(Es.afficher().get(0).getNom());
         handleDragged();
         WebEngine engine = mapUrgence.getEngine();
@@ -186,7 +188,7 @@ public class Urgences implements Initializable {
                         erreur.setVisible(false);
 
                         ExpeditionService Es = new ExpeditionService();
-                        Urgence U = new Urgence(Es.find(exp.getValue()),"gaba", get_lat(), get_long(), get_address(), get_placeId(), description.getText(), plus.getText(), dateFormat.format(cal.getTime()), "1");
+                        Urgence U = new Urgence(Es.find(exp.getValue()),"tarek", get_lat(), get_long(), get_address(), get_placeId(), description.getText(), plus.getText(), dateFormat.format(cal.getTime()), "1");
 
                         UrgenceService Us = new UrgenceService();
 
@@ -224,7 +226,7 @@ public class Urgences implements Initializable {
                     erreur.setVisible(false);
 
                     ExpeditionService Es = new ExpeditionService();
-                    Urgence U = new Urgence(Es.find(exp.getValue()), "gaba", get_lat(), get_long(), get_address(), get_placeId(), description.getText(), plus.getText(), dateFormat.format(cal.getTime()), "0");
+                    Urgence U = new Urgence(Es.find(exp.getValue()), "tarek", get_lat(), get_long(), get_address(), get_placeId(), description.getText(), plus.getText(), dateFormat.format(cal.getTime()), "0");
 
                     UrgenceService Us = new UrgenceService();
 
