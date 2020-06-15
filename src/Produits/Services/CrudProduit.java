@@ -4,10 +4,8 @@ import Produits.Controllers.DataSource;
 import Produits.Model.Produits;
 import javafx.scene.control.Alert;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,8 +26,7 @@ public class CrudProduit {
             pst.setInt(6,p.getFournisseur());
             pst.setString(7,p.getDescription());
             st=pst.executeUpdate();
-            cnx.close();
-            pst.executeUpdate();
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,13 +64,30 @@ public class CrudProduit {
         return st;
     }
 
-    public void updatetab(Produits a) throws SQLException {
+    public void updatetab(Produits a) {
         try {
             Connection cnx= DataSource.getInstance().getCnx();
-            PreparedStatement PS=cnx.prepareStatement("UPDATE `produits` SET `nomProduit`=? ,`description`=? WHERE `id`=?");
+            PreparedStatement PS=cnx.prepareStatement("UPDATE `produits` SET `nomProduit`=?  WHERE `id`=?");
             PS.setString(1,a.getNomProduit());
-            PS.setString(2, a.getDescription());
-            PS.setInt(3,a.getId());
+            PS.setInt(2,a.getId());
+            PS.executeUpdate();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Succès");
+            alert.setHeaderText("Succès");
+            alert.setContentText("Produit Modifié Avec Succès!");
+            alert.showAndWait();
+        } catch (Exception e) {
+            Logger.getLogger(CrudProduit.class.getName()).log(Level.SEVERE,null,e);
+        }
+
+    }
+
+    public void updatetabDesc(Produits a)  {
+        try {
+            Connection cnx= DataSource.getInstance().getCnx();
+            PreparedStatement PS=cnx.prepareStatement("UPDATE `produits` SET `description`=? WHERE `id`=?");
+            PS.setString(1, a.getDescription());
+            PS.setInt(2,a.getId());
             PS.executeUpdate();
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Succès");
@@ -94,7 +108,7 @@ public class CrudProduit {
             PreparedStatement pst=cnx.prepareStatement(req);
             pst.setInt(1,id);
             st=pst.executeUpdate();
-            cnx.close();
+            //cnx.close();
 
 
 
@@ -131,5 +145,38 @@ public class CrudProduit {
         }
         return p;
 
+    }
+    public ArrayList<Produits> getAllProduit() throws SQLException {
+        ArrayList<Produits> retour = new ArrayList<>();
+        Connection cnx= DataSource.getInstance().getCnx();
+        Statement stm = cnx.createStatement();
+        String req = "SELECT * FROM Produits";
+        ResultSet resultat = stm.executeQuery(req);
+        while(resultat.next()){
+            /*
+            private int id;
+            private String nomProduit;
+            private int quantite;
+            private String categorie;
+            private int prix;
+            private String image;
+            private int fournisseur;
+            private String description;
+
+             */
+
+            int id= resultat.getInt(1);
+            String nomProduit = resultat.getString("nomProduit");
+            int quantite =resultat.getInt("quantite");
+            String categorie= resultat.getString("categorie");
+            int prix =resultat.getInt("prix");
+            String image= resultat.getString("image");
+            int fournisseur=resultat.getInt("fournisseur");
+            String description= resultat.getString("description");
+            retour.add(new Produits(id,nomProduit,quantite,categorie,prix,image, fournisseur,description));
+
+        }
+
+        return retour;
     }
 }

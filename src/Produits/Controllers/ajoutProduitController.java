@@ -7,15 +7,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import sun.security.provider.MD5;
 
 import java.awt.*;
+import java.awt.Button;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -23,6 +22,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 import javax.activation.*;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -62,6 +63,23 @@ public class ajoutProduitController implements Initializable {
             frns.getItems().addAll(fr.afficher().get(i).getNomFournisseur());
             //jointure
         }
+        //Controle De saisie
+        Pattern intPattern = Pattern.compile("-?\\d*");
+        UnaryOperator<TextFormatter.Change> filter = change -> {
+            if (intPattern.matcher(change.getControlNewText()).matches()) {
+                return change;
+            }
+            else {Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText("Erreur");
+                alert.setContentText("Veuillez Verifier Les champs!");
+                alert.showAndWait();}
+            return null;
+        };
+        TextFormatter textFormatter = new TextFormatter(filter);
+        TextField prx = new TextField();
+        prx.setTextFormatter(textFormatter);
+
 
 
 
@@ -78,18 +96,8 @@ public class ajoutProduitController implements Initializable {
     public void joindre(javafx.event.ActionEvent event) throws IOException {
         FileChooser fc = new FileChooser();
         File selectedFile = fc.showOpenDialog(null);
-
-
-
-
-
         if(selectedFile != null){
             img.setText(selectedFile.getName()); //le chemin absolu de l'image!
-
-
-
-
-
         }else {
             System.out.println("file is not valid!");
         }
@@ -135,5 +143,14 @@ public class ajoutProduitController implements Initializable {
         }
     }
 
+/*
+    public void controleNumber(javafx.scene.input.KeyEvent keyEvent) {
+        char c=keyEvent.get();
+        if(!(Character.isDigit(c)  || c== KeyEvent.VK_BACK_SPACE) ||c==KeyEvent.VK_DELETE){
+            keyEvent.consume();
+
+        }
+    }
+    */
 
 }

@@ -9,9 +9,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 public class ajoutFournisseurController implements Initializable {
     @FXML private TextField nomF;
@@ -20,6 +23,17 @@ public class ajoutFournisseurController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Pattern intPattern = Pattern.compile("-?\\d*");
+        UnaryOperator<TextFormatter.Change> filter = change -> {
+            if (intPattern.matcher(change.getControlNewText()).matches()) {
+                return change;
+            }
+
+            return null;
+        };
+        TextFormatter textFormatter = new TextFormatter(filter);
+        TextField idF = new TextField();
+        idF.setTextFormatter(textFormatter);
 
     }
 

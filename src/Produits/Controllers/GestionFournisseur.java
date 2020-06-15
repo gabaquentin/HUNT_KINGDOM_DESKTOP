@@ -20,6 +20,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -47,8 +48,6 @@ import java.util.logging.Logger;
 public class GestionFournisseur implements Initializable {
     Connection cnx=DataSource.getInstance().getCnx();
 
-    private double xOffset = 0;
-    private double yOffset = 0;
 
     @FXML private TableView<Fournisseurs> tableF ;
     @FXML private TableColumn<Fournisseurs,String> nomFournisseur;
@@ -63,6 +62,8 @@ public class GestionFournisseur implements Initializable {
     public ObservableList<Fournisseurs> data =FXCollections.observableArrayList();
 
     //Integration
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     @FXML private StackPane parent;
     @FXML private HBox top;
@@ -73,6 +74,12 @@ public class GestionFournisseur implements Initializable {
     @FXML private FontAwesomeIcon btn_menu_exitbars;
     @FXML private Pane maximize;
     @FXML private Pane minimize;
+    @FXML private Pane sp_btn;
+    @FXML private Pane sp_menu;
+    @FXML private FontAwesomeIcon sp_r;
+    @FXML private HBox dashboard;
+    @FXML private AnchorPane body;
+
 
 
 
@@ -106,10 +113,12 @@ public class GestionFournisseur implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        btn_menu_exit.setVisible(false);
-        btn_menu_exitbars.setVisible(false);
-        minimize.setVisible(false);
-        handleDragged();
+        //minimize.setVisible(false);
+        //handleDragged();
+        sp_menu.setVisible(false);
+        dashboard.setDisable(true);
+
+
 
     }
     public void fenetreAjoutF(javafx.event.ActionEvent actionEvent) {
@@ -173,94 +182,6 @@ public class GestionFournisseur implements Initializable {
     }
 
 
-    @FXML
-    private void showmenu(MouseEvent event){
-        TranslateTransition slide = new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.7));
-        slide.setNode(menu);
-
-        slide.setToX(294);
-        slide.play();
-
-        btn_menu_exit.setVisible(true);
-        btn_menu_exitbars.setVisible(true);
-        btn_menu.setVisible(false);
-        btn_menubars.setVisible(false);
-
-        slide.setOnFinished((e ->{
-
-        } ));
-    }
-
-
-
-    @FXML
-    private void hidemenu(MouseEvent event){
-        TranslateTransition slide = new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.7));
-        slide.setNode(menu);
-
-        slide.setToX(0);
-        slide.play();
-
-        btn_menu_exit.setVisible(false);
-        btn_menu_exitbars.setVisible(false);
-        btn_menu.setVisible(true);
-        btn_menubars.setVisible(true);
-
-        slide.setOnFinished((e ->{
-
-        } ));
-    }
-
-    @FXML
-    private void handleClose(MouseEvent event){
-        Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        s.close();
-    }
-
-    @FXML
-    private void handleMin(MouseEvent event){
-        Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        s.setIconified(true);
-    }
-
-    @FXML
-    private void handleMax(MouseEvent event){
-        Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        s.setMaximized(true);
-        minimize.setVisible(true);
-        maximize.setVisible(false);
-    }
-
-    @FXML
-    private void handleMinimize(MouseEvent event){
-        Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        s.setMaximized(false);
-        minimize.setVisible(false);
-        maximize.setVisible(true);
-    }
-
-    private void handleDragged(){
-        top.setOnMousePressed((event -> {
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
-        }));
-        top.setOnMouseDragged((event -> {
-            Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            s.setX(event.getScreenX() - xOffset);
-            s.setY(event.getScreenY() - yOffset);
-            s.setOpacity(0.8f);
-        }));
-        top.setOnDragDone((event -> {
-            Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            s.setOpacity(1.0f);
-        }));
-        top.setOnMouseReleased((event -> {
-            Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            s.setOpacity(1.0f);
-        }));
-    }
 
 
     //Mail
@@ -343,5 +264,113 @@ public class GestionFournisseur implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(Loading.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+
+    @FXML
+    private void showspmenu(MouseEvent event){
+        sp_menu.setVisible(true);
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.5));
+        slide.setNode(sp_menu);
+
+        slide.setToX(+300);
+        slide.play();
+
+        slide.setOnFinished((e ->{
+            sp_btn.setDisable(true);
+            sp_r.setVisible(false);
+        } ));
+    }
+
+    @FXML
+    private void closespmenu(MouseEvent event){
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.5));
+        slide.setNode(sp_menu);
+
+        slide.setToX(0);
+        slide.play();
+
+        slide.setOnFinished((e ->{
+            sp_btn.setDisable(false);
+            sp_r.setVisible(true);
+            sp_menu.setVisible(false);
+        } ));
+    }
+
+    @FXML
+    private void handleClose(MouseEvent event){
+        Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        s.close();
+    }
+
+    @FXML
+    private void handleMin(MouseEvent event){
+        Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        s.setIconified(true);
+    }
+
+    @FXML
+    private void handleMax(MouseEvent event){
+        Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        s.setMaximized(true);
+        minimize.setVisible(true);
+        maximize.setVisible(false);
+    }
+
+    @FXML
+    private void handleMinimize(MouseEvent event){
+        Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        s.setMaximized(false);
+        minimize.setVisible(false);
+        maximize.setVisible(true);
+    }
+
+    private void handleDragged(){
+        top.setOnMousePressed((event -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        }));
+        top.setOnMouseDragged((event -> {
+            Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            s.setX(event.getScreenX() - xOffset);
+            s.setY(event.getScreenY() - yOffset);
+            s.setOpacity(0.8f);
+        }));
+        top.setOnDragDone((event -> {
+            Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            s.setOpacity(1.0f);
+        }));
+        top.setOnMouseReleased((event -> {
+            Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            s.setOpacity(1.0f);
+        }));
+    }
+
+    public void expedition(MouseEvent event) throws IOException {
+
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../Expedition/View/expeditionsAdmin.fxml"));
+
+        body.getChildren().setAll(newLoaded);
+
+    }
+
+    public void urgence(MouseEvent event) throws IOException {
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../Urgence/View/urgencesAdmin.fxml"));
+
+        body.getChildren().setAll(newLoaded);
+    }
+
+    public void dashboard(MouseEvent event) throws IOException {
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../User/View/dashboardAdmin.fxml"));
+
+        body.getChildren().setAll(newLoaded);
+    }
+
+    public void produits(MouseEvent event) throws IOException {
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../Produits/View/AfficheP.fxml"));
+
+        body.getChildren().setAll(newLoaded);
     }
 }

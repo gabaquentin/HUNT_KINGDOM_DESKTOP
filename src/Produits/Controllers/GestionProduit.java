@@ -18,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -39,8 +40,7 @@ public class GestionProduit implements Initializable {
     Connection cnx=DataSource.getInstance().getCnx();
 
 
-    private double xOffset = 0;
-    private double yOffset = 0;
+
 
     @FXML private TableView<Produits>table ;
     @FXML private TableColumn<Produits,String>libelle;
@@ -55,6 +55,9 @@ public class GestionProduit implements Initializable {
 
     //Integration
 
+    private double xOffset = 0;
+    private double yOffset = 0;
+
     @FXML private StackPane parent;
     @FXML private HBox top;
     @FXML private Pane menu;
@@ -64,6 +67,12 @@ public class GestionProduit implements Initializable {
     @FXML private FontAwesomeIcon btn_menu_exitbars;
     @FXML private Pane maximize;
     @FXML private Pane minimize;
+    @FXML private Pane sp_btn;
+    @FXML private Pane sp_menu;
+    @FXML private FontAwesomeIcon sp_r;
+    @FXML private HBox dashboard;
+    @FXML private AnchorPane body;
+
 
 
 
@@ -74,6 +83,7 @@ public class GestionProduit implements Initializable {
 
     @FXML
     public void afficheProduit() {
+        table.getItems().clear();
         String req="SELECT * FROM Produits";
         try {
 
@@ -87,6 +97,8 @@ public class GestionProduit implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
         libelle.setCellValueFactory(new PropertyValueFactory<Produits, String>("nomProduit"));
         quantite.setCellValueFactory(new PropertyValueFactory<Produits, Integer>("quantite"));
         categorie.setCellValueFactory(new PropertyValueFactory<Produits, String>("categorie"));
@@ -106,15 +118,16 @@ public class GestionProduit implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        btn_menu_exit.setVisible(false);
-        btn_menu_exitbars.setVisible(false);
-        minimize.setVisible(false);
-        handleDragged();
+
         table.setEditable(true);
         libelle.setCellFactory(TextFieldTableCell.forTableColumn());
         //quantite.setCellFactory(TextFieldTableCell.forTableColumn());
         categorie.setCellFactory(TextFieldTableCell.forTableColumn());
         description.setCellFactory(TextFieldTableCell.forTableColumn());
+//        minimize.setVisible(false);
+        //handleDragged();
+        sp_menu.setVisible(false);
+        dashboard.setDisable(true);
 
 
     }
@@ -141,8 +154,14 @@ public class GestionProduit implements Initializable {
         CrudProduit ecr = new CrudProduit();
         //ecr.modifP(p);
         ecr.updatetab(p);
-
-
+    }
+    @FXML
+    private void onEditChangedDesc(TableColumn.CellEditEvent<Produits,String> event) throws SQLException {
+        Produits p = table.getSelectionModel().getSelectedItem();
+        p.setDescription(event.getNewValue());
+        CrudProduit ecr = new CrudProduit();
+        //ecr.modifP(p);
+        ecr.updatetabDesc(p);
     }
 
     @FXML
@@ -181,40 +200,34 @@ public class GestionProduit implements Initializable {
 
     //****************************************************//////////////
     @FXML
-    private void showmenu(MouseEvent event){
+    private void showspmenu(MouseEvent event){
+        sp_menu.setVisible(true);
         TranslateTransition slide = new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.7));
-        slide.setNode(menu);
+        slide.setDuration(Duration.seconds(0.5));
+        slide.setNode(sp_menu);
 
-        slide.setToX(294);
+        slide.setToX(+300);
         slide.play();
 
-        btn_menu_exit.setVisible(true);
-        btn_menu_exitbars.setVisible(true);
-        btn_menu.setVisible(false);
-        btn_menubars.setVisible(false);
-
         slide.setOnFinished((e ->{
-
+            sp_btn.setDisable(true);
+            sp_r.setVisible(false);
         } ));
     }
 
     @FXML
-    private void hidemenu(MouseEvent event){
+    private void closespmenu(MouseEvent event){
         TranslateTransition slide = new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.7));
-        slide.setNode(menu);
+        slide.setDuration(Duration.seconds(0.5));
+        slide.setNode(sp_menu);
 
         slide.setToX(0);
         slide.play();
 
-        btn_menu_exit.setVisible(false);
-        btn_menu_exitbars.setVisible(false);
-        btn_menu.setVisible(true);
-        btn_menubars.setVisible(true);
-
         slide.setOnFinished((e ->{
-
+            sp_btn.setDisable(false);
+            sp_r.setVisible(true);
+            sp_menu.setVisible(false);
         } ));
     }
 
@@ -246,26 +259,39 @@ public class GestionProduit implements Initializable {
         maximize.setVisible(true);
     }
 
-    private void handleDragged(){
-        top.setOnMousePressed((event -> {
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
-        }));
-        top.setOnMouseDragged((event -> {
-            Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            s.setX(event.getScreenX() - xOffset);
-            s.setY(event.getScreenY() - yOffset);
-            s.setOpacity(0.8f);
-        }));
-        top.setOnDragDone((event -> {
-            Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            s.setOpacity(1.0f);
-        }));
-        top.setOnMouseReleased((event -> {
-            Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            s.setOpacity(1.0f);
-        }));
+
+    public void expedition(MouseEvent event) throws IOException {
+
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../Expedition/View/expeditionsAdmin.fxml"));
+
+        body.getChildren().setAll(newLoaded);
+
     }
+
+    public void urgence(MouseEvent event) throws IOException {
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../Urgence/View/urgencesAdmin.fxml"));
+
+        body.getChildren().setAll(newLoaded);
+    }
+
+    public void dashboard(MouseEvent event) throws IOException {
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../User/View/dashboardAdmin.fxml"));
+
+        body.getChildren().setAll(newLoaded);
+    }
+
+    public void fourniss(MouseEvent event) throws IOException {
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../Produits/View/AfficheFournisseur.fxml"));
+
+        body.getChildren().setAll(newLoaded);
+    }
+
+    public void frontB(MouseEvent event) throws IOException {
+        AnchorPane newLoaded = FXMLLoader.load(getClass().getResource("../../Produits/View/ListeProduits.fxml"));
+
+        body.getChildren().setAll(newLoaded);
+    }
+
 
 
 }
